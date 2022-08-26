@@ -2,6 +2,8 @@
 
 > [UnoCSS](https://github.com/unocss/unocss) preset for [daisyUI](https://github.com/saadeghi/daisyuihttps://github.com/saadeghi/daisyui)
 
+[Checkout the demo!](https://unocss-preset-daisy.vercel.app/)
+
 ## Installation
 
 ```sh
