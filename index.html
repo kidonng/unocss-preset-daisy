@@ -63,6 +63,11 @@
 	</div>
 
 	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Modal</h3>
+		<label for="my-modal" class="btn modal-button">open modal</label>
+	</div>
+
+	<div class="my-4">
 		<h3 class="font-bold my-1 text-xl">Swap</h3>
 		<label class="swap">
 			<input type="checkbox" />
@@ -72,6 +77,16 @@
 	</div>
 
 	<h2 class="my-2 text-3xl">Data display</h2>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Alert</h3>
+		<div class="alert alert-success shadow-lg">
+			<div>
+				✅
+				<span>Your purchase has been confirmed!</span>
+			</div>
+		</div>
+	</div>
 
 	<div class="my-4">
 		<h3 class="font-bold my-1 text-xl">Badge</h3>
@@ -231,6 +246,97 @@
 		</div>
 	</div>
 
+	<h2 class="my-2 text-3xl">Navigation</h2>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Breadcrumbs</h3>
+		<div class="text-sm breadcrumbs">
+			<ul>
+				<li><a>Home</a></li>
+				<li><a>Documents</a></li>
+				<li>Add Document</li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Link</h3>
+		<a class="link link-hover">I'm a simple link</a>
+	</div>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Menu</h3>
+		<ul class="menu bg-base-100 w-56 rounded-box shadow-xl">
+			<li><a>Item 1</a></li>
+			<li><a>Item 2</a></li>
+			<li><a>Item 3</a></li>
+		</ul>
+	</div>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Navbar</h3>
+		<div class="navbar bg-base-100 rounded-box shadow-xl">
+			<div class="flex-1">
+				<a class="btn btn-ghost normal-case text-xl">daisyUI</a>
+			</div>
+			<div class="flex-none">
+				<ul class="menu menu-horizontal p-0">
+					<li><a>Item 1</a></li>
+					<li tabindex="0">
+						<a>
+							Parent
+							<svg
+								class="fill-current"
+								xmlns="http://www.w3.org/2000/svg"
+								width="20"
+								height="20"
+								viewBox="0 0 24 24"
+							>
+								<path
+									d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
+								/>
+							</svg>
+						</a>
+						<ul class="p-2 bg-base-100">
+							<li><a>Submenu 1</a></li>
+							<li><a>Submenu 2</a></li>
+						</ul>
+					</li>
+					<li><a>Item 3</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Pagination</h3>
+		<div class="btn-group">
+			<button class="btn">1</button>
+			<button class="btn btn-active">2</button>
+			<button class="btn">3</button>
+			<button class="btn">4</button>
+		</div>
+	</div>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Steps</h3>
+		<ul class="steps">
+			<li class="step step-primary">Register</li>
+			<li class="step step-primary">Choose plan</li>
+			<li class="step">Purchase</li>
+			<li class="step">Receive Product</li>
+		</ul>
+	</div>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Tab</h3>
+		<div class="tabs">
+			<a class="tab tab-bordered">Tab 1</a>
+			<a class="tab tab-bordered tab-active">Tab 2</a>
+			<a class="tab tab-bordered">Tab 3</a>
+		</div>
+	</div>
+
 	<h2 class="my-2 text-3xl">Mockup</h2>
 
 	<div class="my-4">
@@ -239,6 +345,38 @@
 			<pre data-prefix="$"><code>npm i daisyui</code></pre>
 			<pre data-prefix=">" class="text-warning"><code>installing...</code></pre>
 			<pre data-prefix=">" class="text-success"><code>Done!</code></pre>
+		</div>
+	</div>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Phone</h3>
+		<div class="mockup-phone">
+			<div class="camera"></div>
+			<div class="display">
+				<div class="artboard artboard-demo phone-1">Hi.</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Window</h3>
+		<div class="mockup-window border bg-base-300">
+			<div class="flex justify-center px-4 py-16 bg-base-200">Hello!</div>
+		</div>
+	</div>
+
+	<!-- Modal -->
+	<input type="checkbox" id="my-modal" class="modal-toggle" />
+	<div class="modal">
+		<div class="modal-box rounded-box">
+			<h3 class="font-bold text-lg">Congratulations random Internet user!</h3>
+			<p class="py-4">
+				You've been selected for a chance to get one year of subscription to use
+				Wikipedia for free!
+			</p>
+			<div class="modal-action">
+				<label for="my-modal" class="btn">Yay!</label>
+			</div>
 		</div>
 	</div>
 
