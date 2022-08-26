@@ -1,0 +1,34 @@
+{
+	"name": "unocss-preset-daisy",
+	"version": "0.0.0",
+	"description": "UnoCSS preset for daisyUI",
+	"scripts": {
+		"build": "tsc && esbuild index.ts --bundle --format=esm --external:camelcase  --outdir=.",
+		"lint": "xo",
+		"prepack": "npm run build"
+	},
+	"repository": "kidonng/unocss-preset-daisy",
+	"license": "MIT",
+	"author": "Kid <hi@xuann.wang> (https://xuann.wang/)",
+	"type": "module",
+	"main": "index.js",
+	"module": "index.js",
+	"files": [
+		"index.js",
+		"index.d.ts"
+	],
+	"dependencies": {
+		"camelcase": "^7.0.0"
+	},
+	"peerDependencies": {
+		"@kidonng/daisyui": "^1.0.1",
+		"unocss": "^0.45.13"
+	},
+	"devDependencies": {
+		"@sindresorhus/tsconfig": "^3.0.1",
+		"daisyui": "^2.24.0",
+		"esbuild": "^0.15.5",
+		"typescript": "^4.8.2",
+		"xo": "^0.52.2"
+	}
+}

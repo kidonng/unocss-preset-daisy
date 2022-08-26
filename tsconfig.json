@@ -1,0 +1,7 @@
+{
+	"extends": "@sindresorhus/tsconfig",
+	"compilerOptions": {
+		"moduleResolution": "Node"
+	},
+	"files": ["index.ts", "daisyui.d.ts"]
+}
