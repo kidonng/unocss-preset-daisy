@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<title>UnoCSS + daisyUI</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<body class="max-w-screen-md mx-auto p-4" data-theme="light">
+	<div class="flex items-center">
+		<h1 class="text-5xl font-300">UnoCSS + daisyUI</h1>
+		<a href="https://github.com/kidonng/unocss-preset-daisy">
+			<div class="i-octicon-mark-github-16 w-8 h-8 ml-4 hover:opacity-50"></div>
+		</a>
+	</div>
+
+	<h2 class="my-2 text-3xl">Actions</h2>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Button</h3>
+		<div>
+			<h4 class="font-bold">Buttons with brand colors</h4>
+			<button class="btn">Button</button>
+			<button class="btn btn-primary">Primary</button>
+			<button class="btn btn-secondary">Secondary</button>
+			<button class="btn btn-accent">Accent</button>
+			<button class="btn btn-ghost">Ghost</button>
+			<button class="btn btn-link">Link</button>
+		</div>
+		<div>
+			<h4 class="font-bold">Buttons with state colors</h4>
+			<button class="btn btn-info">Info</button>
+			<button class="btn btn-success">Success</button>
+			<button class="btn btn-warning">Warning</button>
+			<button class="btn btn-error">Error</button>
+		</div>
+		<div>
+			<h4 class="font-bold">Outline buttons</h4>
+			<button class="btn btn-outline">Button</button>
+			<button class="btn btn-outline btn-primary">Button</button>
+			<button class="btn btn-outline btn-secondary">Button</button>
+			<button class="btn btn-outline btn-accent">Button</button>
+		</div>
+		<div>
+			<h4 class="font-bold">Button sizes</h4>
+			<button class="btn btn-lg">Large</button>
+			<button class="btn">Normal</button>
+			<button class="btn btn-sm">Small</button>
+			<button class="btn btn-xs">Tiny</button>
+		</div>
+	</div>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Dropdown</h3>
+		<div class="dropdown">
+			<label tabindex="0" class="btn m-1">Click</label>
+			<ul
+				tabindex="0"
+				class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+			>
+				<li><a>Item 1</a></li>
+				<li><a>Item 2</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Swap</h3>
+		<label class="swap">
+			<input type="checkbox" />
+			<div class="swap-on">ON</div>
+			<div class="swap-off">OFF</div>
+		</label>
+	</div>
+
+	<h2 class="my-2 text-3xl">Data display</h2>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Badge</h3>
+		<div class="badge">neutral</div>
+		<div class="badge badge-primary">primary</div>
+		<div class="badge badge-secondary">secondary</div>
+		<div class="badge badge-accent">accent</div>
+		<div class="badge badge-ghost">ghost</div>
+	</div>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Card</h3>
+		<div class="card w-96 bg-base-100 shadow-xl">
+			<figure>
+				<img src="https://placeimg.com/400/225/arch" alt="Shoes" />
+			</figure>
+			<div class="card-body">
+				<h3 class="font-bold card-title">Shoes!</h3>
+				<p>If a dog chews shoes whose shoes does he choose?</p>
+				<div class="card-actions justify-end">
+					<button class="btn btn-primary">Buy Now</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Collapse</h3>
+		<div
+			tabindex="0"
+			class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box"
+		>
+			<div class="collapse-title text-xl font-medium">
+				Focus me to see content
+			</div>
+			<div class="collapse-content">
+				<p>tabindex="0" attribute is necessary to make the div focusable</p>
+			</div>
+		</div>
+	</div>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Countdown</h3>
+		<div class="grid grid-flow-col gap-5 text-center auto-cols-max">
+			<div
+				class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content"
+			>
+				<span class="countdown font-mono text-5xl">
+					<span style="--value: 42"></span>
+				</span>
+				days
+			</div>
+			<div
+				class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content"
+			>
+				<span class="countdown font-mono text-5xl">
+					<span style="--value: 12"></span>
+				</span>
+				hours
+			</div>
+			<div
+				class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content"
+			>
+				<span class="countdown font-mono text-5xl">
+					<span style="--value: 34"></span>
+				</span>
+				min
+			</div>
+			<div
+				class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content"
+			>
+				<span class="countdown font-mono text-5xl">
+					<span style="--value: 56"></span>
+				</span>
+				sec
+			</div>
+		</div>
+	</div>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Kbd</h3>
+		<kbd class="kbd">⌘</kbd>
+		<kbd class="kbd">⌥</kbd>
+		<kbd class="kbd">⇧</kbd>
+		<kbd class="kbd">⌃</kbd>
+	</div>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Progress</h3>
+		<div class="flex flex-col gap-2">
+			<progress class="progress w-56" value="0" max="100"></progress>
+			<progress class="progress w-56" value="10" max="100"></progress>
+			<progress class="progress w-56" value="40" max="100"></progress>
+			<progress class="progress w-56" value="70" max="100"></progress>
+			<progress class="progress w-56" value="100" max="100"></progress>
+		</div>
+	</div>
+
+	<h2 class="my-2 text-3xl">Data Input</h2>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Checkbox</h3>
+		<div class="form-control">
+			<label class="label cursor-pointer">
+				<span class="label-text">Remember me</span>
+				<input
+					type="checkbox"
+					checked="checked"
+					class="checkbox checkbox-primary"
+				/>
+			</label>
+		</div>
+	</div>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Text input</h3>
+		<div class="form-control w-full max-w-xs">
+			<label class="label">
+				<span class="label-text">What is your name?</span>
+				<span class="label-text-alt">Alt label</span>
+			</label>
+			<input
+				type="text"
+				placeholder="Type here"
+				class="input input-bordered w-full max-w-xs"
+			/>
+			<label class="label">
+				<span class="label-text-alt">Alt label</span>
+				<span class="label-text-alt">Alt label</span>
+			</label>
+		</div>
+	</div>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Radio</h3>
+		<div class="form-control">
+			<label class="label cursor-pointer">
+				<span class="label-text">Red pill</span>
+				<input
+					type="radio"
+					name="radio-6"
+					class="radio checked:bg-red-500"
+					checked
+				/>
+			</label>
+		</div>
+		<div class="form-control">
+			<label class="label cursor-pointer">
+				<span class="label-text">blue pill</span>
+				<input
+					type="radio"
+					name="radio-6"
+					class="radio checked:bg-blue-500"
+					checked
+				/>
+			</label>
+		</div>
+	</div>
+
+	<h2 class="my-2 text-3xl">Mockup</h2>
+
+	<div class="my-4">
+		<h3 class="font-bold my-1 text-xl">Code</h3>
+		<div class="mockup-code">
+			<pre data-prefix="$"><code>npm i daisyui</code></pre>
+			<pre data-prefix=">" class="text-warning"><code>installing...</code></pre>
+			<pre data-prefix=">" class="text-success"><code>Done!</code></pre>
+		</div>
+	</div>
+
+	<script type="module">
+		import '@unocss/reset/tailwind.css'
+
+		import '@kidonng/daisyui/components/unstyled/index.css'
+		import '@kidonng/daisyui/components/styled/index.css'
+		import '@kidonng/daisyui/themes/index.css'
+		import '@kidonng/daisyui/utilities/unstyled/index.css'
+		import '@kidonng/daisyui/utilities/styled/index.css'
+
+		import 'uno.css'
+	</script>
+</body>
