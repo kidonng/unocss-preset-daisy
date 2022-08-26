@@ -1,6 +1,6 @@
 {
 	"name": "unocss-preset-daisy",
-	"version": "0.0.0",
+	"version": "1.0.0",
 	"description": "UnoCSS preset for daisyUI",
 	"scripts": {
 		"build": "tsc && esbuild index.ts --bundle --format=esm --external:camelcase  --outdir=.",
