@@ -21,7 +21,7 @@
 		"camelcase": "^7.0.0"
 	},
 	"peerDependencies": {
-		"@kidonng/daisyui": "^1.0.1",
+		"@kidonng/daisyui": "^1.2.0",
 		"unocss": "^0.45.13"
 	},
 	"devDependencies": {
