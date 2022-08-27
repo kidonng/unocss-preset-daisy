@@ -35,14 +35,8 @@ export default defineConfig({
 ```js
 // daisyUI assumes Tailwind CSS's Preflight
 import '@unocss/reset/tailwind.css'
-
-import '@kidonng/daisyui/components/unstyled/index.css'
-import '@kidonng/daisyui/components/styled/index.css'
-import '@kidonng/daisyui/themes/index.css'
-import '@kidonng/daisyui/utilities/unstyled/index.css'
-import '@kidonng/daisyui/utilities/styled/index.css'
-
-// Import UnoCSS **AFTER** daisyUI
+// Import daisyUI **BEFORE** UnoCSS
+import '@kidonng/daisyui/index.css'
 import 'uno.css'
 ```
 
@@ -54,7 +48,7 @@ import 'uno.css'
 
 **Do I need to import ALL the styles?**
 
-You can selectively import them, if you don't mind the cumbersome work.
+You can also [selectively import them](https://github.com/kidonng/daisyui#usage), though it can be cumbersome.
 
 That said, due to the utility nature, the styles are compressed very efficiently. Minified size of all styles is about 150 KB, but less than 23 KB after gzipping.
 
