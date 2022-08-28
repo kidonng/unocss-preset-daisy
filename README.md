@@ -16,8 +16,8 @@ npm install unocss unocss-preset-daisy @kidonng/daisyui
 
 ```js
 import {defineConfig} from 'vite'
-import {presetUno, transformerDirectives} from 'unocss'
 import unocss from 'unocss/vite'
+import {presetUno, transformerDirectives} from 'unocss'
 import presetDaisy from 'unocss-preset-daisy'
 
 export default defineConfig({
