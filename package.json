@@ -21,14 +21,14 @@
 		"camelcase": "^7.0.0"
 	},
 	"peerDependencies": {
-		"@kidonng/daisyui": "^1.4.0",
+		"@kidonng/daisyui": "^1.5.2",
 		"unocss": "^0.45.13"
 	},
 	"devDependencies": {
 		"@iconify-json/octicon": "^1.1.16",
 		"@sindresorhus/tsconfig": "^3.0.1",
 		"daisyui": "^2.24.0",
-		"esbuild": "^0.15.5",
+		"esbuild": "^0.15.6",
 		"typescript": "^4.8.2",
 		"vite": "^3.0.9",
 		"xo": "^0.52.2"
