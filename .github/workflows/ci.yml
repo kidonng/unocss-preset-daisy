@@ -3,7 +3,7 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  build:
+  npm-pack:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -12,8 +12,8 @@ jobs:
           node-version: 16
           cache: npm
       - run: npm ci
-      - run: npm run build
-  lint:
+      - run: npm pack
+  xo:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -22,4 +22,4 @@ jobs:
           node-version: 16
           cache: npm
       - run: npm ci
-      - run: npm run lint
+      - run: npx xo

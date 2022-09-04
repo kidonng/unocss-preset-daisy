@@ -4,7 +4,6 @@
 	"description": "UnoCSS preset for daisyUI",
 	"scripts": {
 		"build": "vite build demo",
-		"lint": "xo",
 		"prepack": "tsc && esbuild index.ts --bundle --format=esm --external:camelcase  --outdir=.",
 		"preview": "vite preview demo",
 		"start": "vite demo"
