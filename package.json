@@ -3,9 +3,11 @@
 	"version": "1.1.0",
 	"description": "UnoCSS preset for daisyUI",
 	"scripts": {
-		"build": "tsc && esbuild index.ts --bundle --format=esm --external:camelcase  --outdir=.",
+		"build": "vite build demo",
 		"lint": "xo",
-		"prepack": "npm run build"
+		"prepack": "tsc && esbuild index.ts --bundle --format=esm --external:camelcase  --outdir=.",
+		"preview": "vite preview demo",
+		"start": "vite demo"
 	},
 	"repository": "kidonng/unocss-preset-daisy",
 	"license": "MIT",
