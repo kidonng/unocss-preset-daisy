@@ -13,8 +13,7 @@
 	"license": "MIT",
 	"author": "Kid <hi@xuann.wang> (https://xuann.wang/)",
 	"type": "module",
-	"main": "index.js",
-	"module": "index.js",
+	"exports": "./index.js",
 	"files": [
 		"index.js",
 		"index.d.ts"
