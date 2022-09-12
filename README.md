@@ -70,9 +70,9 @@ You need to [selectively import them](https://github.com/kidonng/daisyui#usage).
 
 **Why is it importing ALL the styles?**
 
-The `@kidonng/daisyui/index.css` entry imports all the styles for easy consuming.
+The `@kidonng/daisyui/index.css` entry imports all the styles for easier consuming.
 
-Since daisyUI is utility-first, the styles can be compressed very efficiently. Minified size of all styles is about 150 KB, but only 23 KB after gzipping.
+Since daisyUI is utility-first, the styles can be compressed _very_ efficiently. Minified size of all styles is about 143 KB, but **only 20 KB** after gzipping.
 
 If you find this unsatisfying, you can always import only the components you actually use. It may sound cumbersome but in fact not so, since they only need to be imported once.
 
