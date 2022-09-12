@@ -21,16 +21,17 @@
 		"camelcase": "^7.0.0"
 	},
 	"peerDependencies": {
-		"@kidonng/daisyui": "^1.5.2",
-		"unocss": "^0.45.13"
+		"@kidonng/daisyui": "^2.27.0",
+		"unocss": "^0.45.21"
 	},
 	"devDependencies": {
-		"@iconify-json/octicon": "^1.1.16",
+		"@iconify-json/octicon": "^1.1.17",
+		"@kidonng/tsc": "^4.8.3",
 		"@sindresorhus/tsconfig": "^3.0.1",
-		"daisyui": "^2.24.0",
-		"esbuild": "^0.15.6",
-		"typescript": "^4.8.2",
-		"vite": "^3.0.9",
-		"xo": "^0.52.2"
+		"daisyui": "^2.27.0",
+		"esbuild": "^0.15.7",
+		"typescript": "npm:@kidonng/typescript@^4.8.3",
+		"vite": "^3.1.0",
+		"xo": "^0.52.3"
 	}
 }
