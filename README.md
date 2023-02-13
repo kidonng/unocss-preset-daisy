@@ -7,7 +7,7 @@
 ## Installation
 
 ```sh
-npm install unocss @unocss/reset unocss-preset-daisy @kidonng/daisyui
+npm install unocss unocss-preset-daisy @kidonng/daisyui
 ```
 
 ## Usage
@@ -73,9 +73,9 @@ export default defineNuxtConfig({
 After configuring the framework, add these imports to your entrypoint:
 
 ```js
-// daisyUI assumes Tailwind CSS's Preflight
+// `@unocss/reset` comes with `unocss` so you don't have to install it separately
 import '@unocss/reset/tailwind.css'
-// Import daisyUI **BEFORE** uno.css
+// Import `@kidonng/daisyui` **BEFORE** `uno.css`
 import '@kidonng/daisyui/index.css'
 import 'uno.css'
 ```
