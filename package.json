@@ -30,8 +30,12 @@
 		"@sindresorhus/tsconfig": "^3.0.1",
 		"daisyui": "^2.27.0",
 		"esbuild": "^0.15.7",
-		"typescript": "npm:@kidonng/typescript@^4.8.3",
 		"vite": "^3.1.0",
 		"xo": "^0.52.3"
+	},
+	"pnpm": {
+		"overrides": {
+			"typescript": "npm:@kidonng/typescript@^4.8.3"
+		}
 	}
 }

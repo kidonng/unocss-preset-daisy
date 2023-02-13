@@ -30,7 +30,7 @@ const presetDaisy = (): Preset => ({
 	rules: [
 		[
 			/^rounded-(?:box|btn|badge)$/,
-			([name]) => ({'border-radius': `var(--${name!})`}),
+			([name]) => ({'border-radius': `var(--${name})`}),
 		],
 	],
 })

@@ -7,19 +7,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - run: npm i -g pnpm@7
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
-          cache: npm
-      - run: npm ci
+          node-version: 18
+          cache: pnpm
+      - run: pnpm install
       - run: npm pack
   xo:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - run: npm i -g pnpm@7
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
-          cache: npm
-      - run: npm ci
-      - run: npx xo
+          node-version: 18
+          cache: pnpm
+      - run: pnpm install
+      - run: pnpm xo

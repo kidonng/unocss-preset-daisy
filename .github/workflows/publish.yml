@@ -14,12 +14,13 @@ jobs:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 20
+      - run: npm i -g pnpm@7
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
-          cache: npm
+          node-version: 18
+          cache: pnpm
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
+      - run: pnpm install
       - run: |
           git config user.name github-actions[bot]
           git config user.email github-actions[bot]@users.noreply.github.com
