@@ -26,17 +26,12 @@
 	},
 	"devDependencies": {
 		"@iconify-json/octicon": "^1.1.32",
-		"@kidonng/tsc": "4.9.5-0",
 		"@sindresorhus/tsconfig": "^3.0.1",
 		"@unocss/reset": "^0.49.4",
 		"daisyui": "^2.50.0",
 		"esbuild": "^0.17.8",
+		"typescript": "^4.9.5",
 		"vite": "^4.1.1",
 		"xo": "^0.53.1"
-	},
-	"pnpm": {
-		"overrides": {
-			"typescript": "npm:@kidonng/typescript@^4.9.5-0"
-		}
 	}
 }
