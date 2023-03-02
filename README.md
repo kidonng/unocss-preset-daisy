@@ -82,17 +82,17 @@ import 'uno.css'
 
 ## Questions
 
-**How to specify a theme / use unstyled components?**
+**How to use a built-in theme / unstyled components?**
 
-Please refer to [daisyUI usage](https://github.com/kidonng/daisyui#usage).
+Please refer to [`@kidonng/daisyui` usage](https://github.com/kidonng/daisyui#usage).
 
-**Why is it importing ALL the styles?**
+**`@kidonng/daisyui/index.css` imports EVERYTHING!**
 
-The `@kidonng/daisyui/index.css` entry imports all the styles for easier consuming.
+This entry imports all styles for easier use.
 
-Since daisyUI is utility-first, the styles can be compressed _very_ efficiently. Minified size of all styles is about 143 KB, but **only 20 KB** after gzipping.
+Since daisyUI is utility-first, the styles can be compressed very efficiently. Minified size of all styles is about 143 KB (as of writing), but **only 20 KB** after gzipping.
 
-If you find this unsatisfying, you can [only import the styles you actually use](https://github.com/kidonng/daisyui#usage). It may sound cumbersome but in fact not so, since they only need to be imported once globally.
+If this is unsatisfying, you can [only import the styles you actually use](https://github.com/kidonng/daisyui#usage). It may sound cumbersome but in fact not so, since they only need to be imported once globally.
 
 You can also use [PurgeCSS](https://purgecss.com/), though it doesn't play nice with UnoCSS (or Vite in large).
 
@@ -100,6 +100,6 @@ You can also use [PurgeCSS](https://purgecss.com/), though it doesn't play nice 
 
 [`@kidonng/daisyui`](https://github.com/kidonng/daisyui) is a redistribution of daisyUI, to make it compatible with UnoCSS.
 
-**I was expecting a full UnoCSS port!**
+**I'm expecting a full UnoCSS port!**
 
 Not currently, sorry. I envision a future where we don't need `@kidonng/daisyui`, which is one of the reasons this is a separate module.
