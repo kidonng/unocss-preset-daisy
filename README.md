@@ -80,6 +80,35 @@ import '@kidonng/daisyui/index.css'
 import 'uno.css'
 ```
 
+### Custom themes
+
+> **Note**: Refer to [`@kidonng/daisyui` documentation](https://github.com/kidonng/daisyui#themes) for built-in themes.
+
+Use [UnoCSS's theming system](https://github.com/unocss/unocss#extend-theme) to customize the theme.
+
+```js
+export default defineConfig({
+	plugins: [
+		unocss({
+			// ...
+			theme: {
+				colors: {
+					neutral: 'red',
+					// Use camelCase instead of kebab-case (e.g. `neutral-focus`)
+					neutralFocus: 'green',
+					// Use object instead of hyphen for color grades/numbers (e.g. `base-100`)
+					base: {
+						100: 'blue',
+					},
+				},
+			},
+		}),
+	],
+})
+```
+
+For details, please read [issue #9](https://github.com/kidonng/unocss-preset-daisy/issues/9#issuecomment-1452292840).
+
 ## Questions
 
 **How to use a built-in theme / unstyled components?**
