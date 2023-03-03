@@ -4,7 +4,7 @@ import colors from 'daisyui/src/colors/index.js'
 
 const colorEntries = Object.entries(colors)
 
-const presetDaisy = (): Preset => ({
+export const presetDaisy = (): Preset => ({
 	name: 'daisy',
 	theme: {
 		colors: {
@@ -34,5 +34,3 @@ const presetDaisy = (): Preset => ({
 		],
 	],
 })
-
-export default presetDaisy
