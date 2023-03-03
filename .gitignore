@@ -1,6 +1,5 @@
 node_modules
-index.js
-index.d.ts
+dist
 *.tgz
 
 /demo/dist

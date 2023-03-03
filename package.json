@@ -4,7 +4,7 @@
 	"description": "UnoCSS preset for daisyUI",
 	"scripts": {
 		"build": "vite build demo",
-		"prepack": "tsc",
+		"prepack": "tsc --noEmit && unbuild",
 		"preview": "vite preview demo",
 		"start": "vite demo"
 	},
@@ -12,10 +12,18 @@
 	"license": "MIT",
 	"author": "Kid <hi@xuann.wang> (https://xuann.wang/)",
 	"type": "module",
-	"exports": "./index.js",
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.mjs",
+			"require": "./dist/index.cjs"
+		}
+	},
+	"types": "./dist/index.d.ts",
+	"module": "./dist/index.mjs",
+	"main": "./dist/index.cjs",
 	"files": [
-		"index.js",
-		"index.d.ts"
+		"dist"
 	],
 	"dependencies": {
 		"camelcase": "^7.0.1",
@@ -30,6 +38,7 @@
 		"@sindresorhus/tsconfig": "^3.0.1",
 		"@unocss/reset": "^0.50.3",
 		"typescript": "^4.9.5",
+		"unbuild": "^1.1.2",
 		"vite": "^4.1.4",
 		"xo": "^0.53.1"
 	}
