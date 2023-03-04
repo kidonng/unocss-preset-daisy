@@ -73,7 +73,8 @@ export default defineNuxtConfig({
 After configuring the framework, add these imports to your entrypoint:
 
 ```js
-// `@unocss/reset` comes with `unocss` so you don't have to install it separately
+// `@unocss/reset` comes with `unocss`
+// If you are using pnpm, install it separately unless you enable hoisting
 import '@unocss/reset/tailwind.css'
 // Import `@kidonng/daisyui` **BEFORE** `uno.css`
 import '@kidonng/daisyui/index.css'
