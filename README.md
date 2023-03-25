@@ -117,4 +117,4 @@ For details, please read [issue #9](https://github.com/kidonng/unocss-preset-dai
 
 - [#14](https://github.com/kidonng/unocss-preset-daisy/issues/14): [variants](https://windicss.org/utilities/general/variants.html) do not work
 
-**Unused styles may be imported.** This is both due to lots of hacks being used and how UnoCSS works. However, the preset try to figure out the minimum styles needed, thus the cost is trivial most of the time.
+**Unused styles may be imported.** This is both due to lots of hacks being used and how UnoCSS works. However, the preset will try to figure out the minimum styles needed, thus the cost is trivial most of the time.
