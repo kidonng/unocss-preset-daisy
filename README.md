@@ -12,6 +12,8 @@ npm install unocss daisyui unocss-preset-daisy
 
 ## Usage
 
+> **Note**: `@unocss/reset` comes with `unocss`. If you are using pnpm, install it separately unless you enable hoisting.
+
 ### Vite
 
 ```js
@@ -29,22 +31,25 @@ export default defineConfig({
 })
 ```
 
+```js
+import '@unocss/reset/tailwind.css'
+import 'uno.css'
+```
+
 ### Astro
 
 ```js
 import {defineConfig} from 'astro/config'
-import unocss from 'unocss/vite'
+import unocss from 'unocss/astro'
 import {presetUno} from 'unocss'
 import {presetDaisy} from 'unocss-preset-daisy'
 
 export default defineConfig({
-	vite: {
-		plugins: [
-			unocss({
-				presets: [presetUno(), presetDaisy()],
-			}),
-		],
-	}
+	integrations: [
+		unocss({
+			presets: [presetUno(), presetDaisy()],
+		}),
+	],
 })
 ```
 
@@ -53,27 +58,17 @@ export default defineConfig({
 To use UnoCSS with Nuxt, `@unocss/nuxt` must be installed as well.
 
 ```js
-import {defineNuxtConfig} from 'nuxt'
+import {defineNuxtConfig} from 'nuxt/config'
 import {presetUno} from 'unocss'
 import {presetDaisy} from 'unocss-preset-daisy'
 
 export default defineNuxtConfig({
 	modules: ['@unocss/nuxt'],
+	css: ['@unocss/reset/tailwind.css'],
 	unocss: {
 		presets: [presetUno(), presetDaisy()],
 	},
 })
-```
-
-### Entrypoint
-
-After configuring the framework, add these imports to your entrypoint:
-
-```js
-// `@unocss/reset` comes with `unocss`
-// If you are using pnpm, install it separately unless you enable hoisting
-import '@unocss/reset/tailwind.css'
-import 'uno.css'
 ```
 
 ## Config
