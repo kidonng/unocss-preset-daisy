@@ -7,7 +7,7 @@
 ## Installation
 
 ```sh
-npm install unocss unocss-preset-daisy @kidonng/daisyui
+npm install unocss daisyui unocss-preset-daisy
 ```
 
 ## Usage
@@ -17,13 +17,12 @@ npm install unocss unocss-preset-daisy @kidonng/daisyui
 ```js
 import {defineConfig} from 'vite'
 import unocss from 'unocss/vite'
-import {presetUno, transformerDirectives} from 'unocss'
+import {presetUno} from 'unocss'
 import {presetDaisy} from 'unocss-preset-daisy'
 
 export default defineConfig({
 	plugins: [
 		unocss({
-			transformers: [transformerDirectives()],
 			presets: [presetUno(), presetDaisy()],
 		}),
 	],
@@ -35,14 +34,13 @@ export default defineConfig({
 ```js
 import {defineConfig} from 'astro/config'
 import unocss from 'unocss/vite'
-import {presetUno, transformerDirectives} from 'unocss'
+import {presetUno} from 'unocss'
 import {presetDaisy} from 'unocss-preset-daisy'
 
 export default defineConfig({
 	vite: {
 		plugins: [
 			unocss({
-				transformers: [transformerDirectives()],
 				presets: [presetUno(), presetDaisy()],
 			}),
 		],
@@ -56,13 +54,12 @@ To use UnoCSS with Nuxt, `@unocss/nuxt` must be installed as well.
 
 ```js
 import {defineNuxtConfig} from 'nuxt'
-import {presetUno, transformerDirectives} from 'unocss'
+import {presetUno} from 'unocss'
 import {presetDaisy} from 'unocss-preset-daisy'
 
 export default defineNuxtConfig({
 	modules: ['@unocss/nuxt'],
 	unocss: {
-		transformers: [transformerDirectives()],
 		presets: [presetUno(), presetDaisy()],
 	},
 })
@@ -76,27 +73,35 @@ After configuring the framework, add these imports to your entrypoint:
 // `@unocss/reset` comes with `unocss`
 // If you are using pnpm, install it separately unless you enable hoisting
 import '@unocss/reset/tailwind.css'
-// Import `@kidonng/daisyui` **BEFORE** `uno.css`
-import '@kidonng/daisyui/index.css'
 import 'uno.css'
 ```
 
-### Custom themes
+## Config
 
-> **Note**: Refer to [`@kidonng/daisyui` documentation](https://github.com/kidonng/daisyui#themes) for built-in themes.
+This preset accepts [the same config as daisyUI](https://daisyui.com/docs/config/) (except for `logs`, `prefix` and `darkTheme`).
+
+```js
+{
+	presets: [
+		presetUno(),
+		presetDaisy({
+			styled: false,
+			themes: ['light', 'dark'],
+		}),
+	],
+}
+```
+
+### Custom themes
 
 Use [UnoCSS's theming system](https://github.com/unocss/unocss#extend-theme) to customize the theme.
 
 ```js
 {
-	// UnoCSS config
-	transformers: [transformerDirectives()],
 	presets: [presetUno(), presetDaisy()],
-	// Custom themes
 	theme: {
-		// This is NOT a theme name, it must be `colors`
 		colors: {
-			// Refer to https://daisyui.com/docs/colors/ for the list of color names
+			// Refer to https://daisyui.com/docs/colors/ for colors
 			neutral: 'red',
 			// Use camelCase instead of kebab-case (e.g. `neutral-focus`)
 			neutralFocus: 'green',
@@ -111,26 +116,10 @@ Use [UnoCSS's theming system](https://github.com/unocss/unocss#extend-theme) to 
 
 For details, please read [issue #9](https://github.com/kidonng/unocss-preset-daisy/issues/9#issuecomment-1452292840).
 
-## Questions
+## Limitations
 
-**How to use a built-in theme / unstyled components?**
+**This is not a full daisyUI port.** All daisyUI components/utilities should work but they may not work with some UnoCSS features:
 
-Please refer to [`@kidonng/daisyui` usage](https://github.com/kidonng/daisyui#usage).
+- [#14](https://github.com/kidonng/unocss-preset-daisy/issues/14): [variants](https://windicss.org/utilities/general/variants.html) do not work
 
-**`@kidonng/daisyui/index.css` imports EVERYTHING!**
-
-This entry imports all styles for easier use.
-
-Since daisyUI is utility-first, the styles can be compressed very efficiently. Minified size of all styles is about 143 KB (as of writing), but **only 20 KB** after gzipping.
-
-If this is unsatisfying, you can [only import the styles you actually use](https://github.com/kidonng/daisyui#usage). It may sound cumbersome but in fact not so, since they only need to be imported once globally.
-
-You can also use [PurgeCSS](https://purgecss.com/), though it doesn't play nice with UnoCSS (or Vite in large).
-
-**Why use `@kidonng/daisyui` instead of the official `daisyui` package?**
-
-[`@kidonng/daisyui`](https://github.com/kidonng/daisyui) is a redistribution of daisyUI, to make it compatible with UnoCSS.
-
-**I'm expecting a full UnoCSS port!**
-
-Not currently, sorry. I envision a future where we don't need `@kidonng/daisyui`, which is one of the reasons this is a separate module.
+**Unused styles may be imported.** This is both due to lots of hacks being used and how UnoCSS works. However, the preset try to figure out the minimum styles needed, thus the cost is trivial most of the time.
