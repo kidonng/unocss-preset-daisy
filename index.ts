@@ -35,7 +35,6 @@ export const presetDaisy = (
 ): Preset => {
 	const rules = new Map<string, string>()
 	const keyframes: string[] = []
-	const overrides: string[] = []
 
 	const styles = [
 		// Components
@@ -83,21 +82,25 @@ export const presetDaisy = (
 		)
 	}
 
-	for (const rule of [
-		// Move after `btn-*`
-		'btn-outline',
-		// Resolve conflicts with @unocss/preset-wind `link:` variant
-		'link-primary',
-		'link-secondary',
-		'link-accent',
-		'link-neutral',
-		'link-success',
-		'link-info',
-		'link-warning',
-		'link-error',
-		'link-hover',
+	// Move after `btn-*`
+	const btnOutline = rules.get('btn-outline')!
+	rules.delete('btn-outline')
+	rules.set('btn-outline', btnOutline)
+
+	// Resolve conflicts with @unocss/preset-wind `link:` variant
+	for (const modifier of [
+		'primary',
+		'secondary',
+		'accent',
+		'neutral',
+		'success',
+		'info',
+		'warning',
+		'error',
+		'hover',
 	]) {
-		overrides.push(rules.get(rule)!)
+		const rule = `link-${modifier}`
+		rules.set('link', rules.get('link')! + rules.get(rule)! + '\n')
 		rules.delete(rule)
 	}
 
@@ -140,11 +143,6 @@ export const presetDaisy = (
 		{
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			getCSS: () => keyframes.join('\n'),
-		},
-		{
-			layer: 'default',
-			// eslint-disable-next-line @typescript-eslint/naming-convention
-			getCSS: () => overrides.join('\n'),
 		},
 	]
 

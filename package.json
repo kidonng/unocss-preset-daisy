@@ -5,8 +5,8 @@
 	"scripts": {
 		"build": "vite build demo",
 		"prepack": "tsc --noEmit && unbuild",
-		"preview": "vite preview demo",
-		"start": "vite demo"
+		"preview": "vite preview demo --host",
+		"start": "vite demo --host"
 	},
 	"repository": "kidonng/unocss-preset-daisy",
 	"license": "MIT",
