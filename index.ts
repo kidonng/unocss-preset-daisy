@@ -70,7 +70,12 @@ export const presetDaisy = (
 		const token = tokenize(selector)[0]!
 		let base = ''
 
-		if (token.type === 'class') base = token.name
+		// .foo
+		if (token.type === 'class') {
+			// Resolve conflicts with @unocss/preset-wind `link:` variant
+			base = token.name.startsWith('link-') ? 'link' : token.name
+		}
+		// :where(.foo)
 		else if (token.type === 'pseudo-class' && token.name === 'where')
 			base = (tokenize(token.argument!)[0] as ClassToken).name
 		// `[dir="rtl"] .foo` & `:root .foo`
@@ -82,27 +87,10 @@ export const presetDaisy = (
 		)
 	}
 
-	// Move after `btn-*`
+	// Move `.btn-outline` after `btn-*`
 	const btnOutline = rules.get('btn-outline')!
 	rules.delete('btn-outline')
 	rules.set('btn-outline', btnOutline)
-
-	// Resolve conflicts with @unocss/preset-wind `link:` variant
-	for (const modifier of [
-		'primary',
-		'secondary',
-		'accent',
-		'neutral',
-		'success',
-		'info',
-		'warning',
-		'error',
-		'hover',
-	]) {
-		const rule = `link-${modifier}`
-		rules.set('link', rules.get('link')! + rules.get(rule)! + '\n')
-		rules.delete(rule)
-	}
 
 	const preflights: Preflight[] = [
 		{
