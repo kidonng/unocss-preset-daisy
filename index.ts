@@ -74,26 +74,19 @@ export const presetDaisy = (
 		)
 			selector = rule.selectors[1]!
 
-		const token = tokenize(selector)[0]!
+		const tokens = tokenize(selector)
+		const token = tokens[0]!
 		let base = ''
 
-		// .foo
 		if (token.type === 'class') {
 			// Resolve conflicts with @unocss/preset-wind `link:` variant
 			base = token.name.startsWith('link-') ? 'link' : token.name
-		}
-		// :where(.foo)
-		else if (token.type === 'pseudo-class' && token.name === 'where')
+		} else if (token.type === 'pseudo-class' && token.name === 'where')
 			base = (tokenize(token.argument!)[0] as ClassToken).name
-		// `[dir="rtl"] .foo` & `:root .foo`
-		else base = (tokenize(selector)[2] as ClassToken).name
+		else if (['[dir="rtl"]', ':root'].includes(token.content))
+			base = (tokens[2] as ClassToken).name
 
-		rules.set(
-			base,
-			(rules.get(base) ?? '') +
-				replaceSlash(replacePrefix(String(rule))) +
-				'\n',
-		)
+		rules.set(base, (rules.get(base) ?? '') + String(rule) + '\n')
 	}
 
 	// Move `.btn-outline` after `btn-*`
@@ -149,7 +142,7 @@ export const presetDaisy = (
 			(rule) =>
 				[
 					new RegExp(`^${rule[0]}$`),
-					() => rule[1],
+					() => replaceSlash(replacePrefix(rule[1])),
 					{layer: 'components'},
 				] as DynamicRule,
 		),
