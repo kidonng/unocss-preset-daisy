@@ -96,55 +96,49 @@ export const presetDaisy = (
 	rules.delete('btn-outline')
 	rules.set('btn-outline', btnOutline)
 
-	const preflights: Preflight[] = [
-		{
-			// eslint-disable-next-line @typescript-eslint/naming-convention
-			getCSS: () =>
-				toCss(
-					Object.fromEntries(
-						Object.entries(themes)
-							.filter(([selector]) => {
-								const theme = (tokenize(selector)[0] as AttributeToken).value!
+	const preflights: string[] = [
+		toCss(
+			Object.fromEntries(
+				Object.entries(themes)
+					.filter(([selector]) => {
+						const theme = (tokenize(selector)[0] as AttributeToken).value!
 
-								if (options.themes === false) return theme === 'light'
-								if (Array.isArray(options.themes))
-									return options.themes.includes(theme)
+						if (options.themes === false) return theme === 'light'
+						if (Array.isArray(options.themes))
+							return options.themes.includes(theme)
 
-								return true
-							})
-							.map(([selector, colors], index) => {
-								const theme = (tokenize(selector)[0] as AttributeToken).value!
-								const isDefault = Array.isArray(options.themes)
-									? index === 0
-									: theme === 'light'
+						return true
+					})
+					.map(([selector, colors], index) => {
+						const theme = (tokenize(selector)[0] as AttributeToken).value!
+						const isDefault = Array.isArray(options.themes)
+							? index === 0
+							: theme === 'light'
 
-								return [
-									isDefault ? `:root, ${selector}` : selector,
-									Object.fromEntries(
-										Object.entries(colorFunctions.convertToHsl(colors)).map(
-											([prop, value]) => [prop, replaceSpace(value)],
-										),
-									),
-								]
-							}),
-					),
-				),
-		},
-		{
-			// eslint-disable-next-line @typescript-eslint/naming-convention
-			getCSS: () => keyframes.join('\n'),
-		},
+						return [
+							isDefault ? `:root, ${selector}` : selector,
+							Object.fromEntries(
+								Object.entries(colorFunctions.convertToHsl(colors)).map(
+									([prop, value]) => [prop, replaceSpace(value)],
+								),
+							),
+						]
+					}),
+			),
+		),
+		...keyframes,
 	]
 
-	if (options.base)
-		preflights.push({
-			// eslint-disable-next-line @typescript-eslint/naming-convention
-			getCSS: () => replaceSlash(replacePrefix(toCss(base))),
-		})
+	if (options.base) preflights.unshift(replaceSlash(replacePrefix(toCss(base))))
 
 	return {
 		name: 'unocss-preset-daisy',
-		preflights,
+		preflights: [
+			{
+				// eslint-disable-next-line @typescript-eslint/naming-convention
+				getCSS: () => preflights.join('\n'),
+			},
+		],
 		theme: {
 			colors: {
 				...Object.fromEntries(
