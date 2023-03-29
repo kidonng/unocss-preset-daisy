@@ -24,30 +24,32 @@ const replacePrefix = (css: string) => css.replace(/--tw-/g, '--un-')
 const replaceSlash = (css: string) => css.replace(/\) \/ /g, '), ')
 const replaceSpace = (css: string) => css.replace(/ /g, ', ')
 
+const defaultOptions = {
+	styled: true,
+	themes: true as boolean | string[],
+	base: true,
+	utils: true,
+	rtl: false,
+}
+
 export const presetDaisy = (
-	options: {
-		styled?: boolean
-		themes?: boolean | string[]
-		base?: boolean
-		utils?: boolean
-		rtl?: boolean
-	} = {},
+	options: Partial<typeof defaultOptions> = {},
 ): Preset => {
+	options = {...defaultOptions, ...options}
+
 	const rules = new Map<string, string>()
 	const keyframes: string[] = []
 
 	const styles = [
-		// Components
-		options.styled === false
+		options.styled
 			? options.rtl
-				? unstyledRtl
-				: unstyled
+				? styledRtl
+				: styled
 			: options.rtl
-			? styledRtl
-			: styled,
+			? unstyledRtl
+			: unstyled,
 	]
-	if (options.utils !== false)
-		styles.push(utilities, utilitiesUnstyled, utilitiesStyled)
+	if (options.utils) styles.push(utilities, utilitiesUnstyled, utilitiesStyled)
 
 	for (const node of styles.flatMap((style) => parse(style).nodes)) {
 		const isAtRule = node.type === 'atrule'
@@ -134,7 +136,7 @@ export const presetDaisy = (
 		},
 	]
 
-	if (options.base !== false)
+	if (options.base)
 		preflights.push({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			getCSS: () => replaceSlash(replacePrefix(toCss(base))),
