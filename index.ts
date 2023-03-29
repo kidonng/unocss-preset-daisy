@@ -80,7 +80,10 @@ export const presetDaisy = (
 
 		if (token.type === 'class') {
 			// Resolve conflicts with @unocss/preset-wind `link:` variant
-			base = token.name.startsWith('link-') ? 'link' : token.name
+			if (selector.startsWith('.link-')) base = 'link'
+			if (selector.startsWith('.btn-outline.btn-'))
+				base = (tokens[1] as ClassToken).name
+			base = token.name
 		} else if (token.type === 'pseudo-class' && token.name === 'where')
 			base = (tokenize(token.argument!)[0] as ClassToken).name
 		else if (['[dir="rtl"]', ':root'].includes(token.content))
@@ -89,7 +92,7 @@ export const presetDaisy = (
 		rules.set(base, (rules.get(base) ?? '') + String(rule) + '\n')
 	}
 
-	// Move `.btn-outline` after `btn-*`
+	// Move `.btn-outline` after `.btn-*`
 	const btnOutline = rules.get('btn-outline')!
 	rules.delete('btn-outline')
 	rules.set('btn-outline', btnOutline)
