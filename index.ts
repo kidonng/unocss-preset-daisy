@@ -1,5 +1,5 @@
-import postcss, {type Container, type Rule} from 'postcss'
-import {parse} from 'postcss-js'
+import postcss, {type Rule} from 'postcss'
+import {parse, type CssInJs} from 'postcss-js'
 import {tokenize, type ClassToken, type AttributeToken} from 'parsel-js'
 import type {Preset, Preflight, DynamicRule} from 'unocss'
 import camelCase from 'camelcase'
@@ -17,7 +17,7 @@ import themes from 'daisyui/src/colors/themes.js'
 import colorFunctions from 'daisyui/src/colors/functions.js'
 
 const processor = postcss.default()
-const toCss = (css: Container) => processor.process(css).css
+const toCss = (object: CssInJs) => processor.process(parse(object)).css
 
 const replacePrefix = (css: string) => css.replace(/--tw-/g, '--un-')
 // UnoCSS uses comma syntax
@@ -52,7 +52,7 @@ export const presetDaisy = (
 	for (const node of styles.flatMap((style) => parse(style).nodes)) {
 		const isAtRule = node.type === 'atrule'
 		if (isAtRule && node.name === 'keyframes') {
-			keyframes.push(toCss(node))
+			keyframes.push(String(node))
 			continue
 		}
 
@@ -83,7 +83,9 @@ export const presetDaisy = (
 
 		rules.set(
 			base,
-			(rules.get(base) ?? '') + replaceSlash(replacePrefix(toCss(rule))) + '\n',
+			(rules.get(base) ?? '') +
+				replaceSlash(replacePrefix(String(rule))) +
+				'\n',
 		)
 	}
 
@@ -97,34 +99,32 @@ export const presetDaisy = (
 			// eslint-disable-next-line @typescript-eslint/naming-convention
 			getCSS: () =>
 				toCss(
-					parse(
-						Object.fromEntries(
-							Object.entries(themes)
-								.filter(([selector]) => {
-									const theme = (tokenize(selector)[0] as AttributeToken).value!
+					Object.fromEntries(
+						Object.entries(themes)
+							.filter(([selector]) => {
+								const theme = (tokenize(selector)[0] as AttributeToken).value!
 
-									if (options.themes === false) return theme === 'light'
-									if (Array.isArray(options.themes))
-										return options.themes.includes(theme)
+								if (options.themes === false) return theme === 'light'
+								if (Array.isArray(options.themes))
+									return options.themes.includes(theme)
 
-									return true
-								})
-								.map(([selector, colors], index) => {
-									const theme = (tokenize(selector)[0] as AttributeToken).value!
-									const isDefault = Array.isArray(options.themes)
-										? index === 0
-										: theme === 'light'
+								return true
+							})
+							.map(([selector, colors], index) => {
+								const theme = (tokenize(selector)[0] as AttributeToken).value!
+								const isDefault = Array.isArray(options.themes)
+									? index === 0
+									: theme === 'light'
 
-									return [
-										isDefault ? `:root, ${selector}` : selector,
-										Object.fromEntries(
-											Object.entries(colorFunctions.convertToHsl(colors)).map(
-												([prop, value]) => [prop, replaceSpace(value)],
-											),
+								return [
+									isDefault ? `:root, ${selector}` : selector,
+									Object.fromEntries(
+										Object.entries(colorFunctions.convertToHsl(colors)).map(
+											([prop, value]) => [prop, replaceSpace(value)],
 										),
-									]
-								}),
-						),
+									),
+								]
+							}),
 					),
 				),
 		},
@@ -137,7 +137,7 @@ export const presetDaisy = (
 	if (options.base !== false)
 		preflights.push({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
-			getCSS: () => replaceSlash(replacePrefix(toCss(parse(base)))),
+			getCSS: () => replaceSlash(replacePrefix(toCss(base))),
 		})
 
 	return {
