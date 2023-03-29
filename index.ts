@@ -1,7 +1,7 @@
 import postcss, {type Rule} from 'postcss'
 import {parse, type CssInJs} from 'postcss-js'
-import {tokenize, type ClassToken, type AttributeToken} from 'parsel-js'
-import type {Preset, Preflight, DynamicRule} from 'unocss'
+import {tokenize, type ClassToken} from 'parsel-js'
+import type {Preset, DynamicRule} from 'unocss'
 import camelCase from 'camelcase'
 
 import colors from 'daisyui/src/colors/index.js'
@@ -22,14 +22,19 @@ const toCss = (object: CssInJs) => processor.process(parse(object)).css
 const replacePrefix = (css: string) => css.replace(/--tw-/g, '--un-')
 // UnoCSS uses comma syntax
 const replaceSlash = (css: string) => css.replace(/\) \/ /g, '), ')
-const replaceSpace = (css: string) => css.replace(/ /g, ', ')
+const replaceSpace = (css: string) =>
+	// HSL
+	css.replace(/([\d.]+) ([\d.%]+) ([\d.%]+)/g, '$1, $2, $3')
 
 const defaultOptions = {
 	styled: true,
-	themes: true as boolean | string[],
+	themes: true as
+		| boolean
+		| Array<string | Record<string, Record<string, string>>>,
 	base: true,
 	utils: true,
 	rtl: false,
+	darkTheme: 'dark',
 }
 
 export const presetDaisy = (
@@ -96,40 +101,20 @@ export const presetDaisy = (
 	rules.delete('btn-outline')
 	rules.set('btn-outline', btnOutline)
 
-	const preflights: string[] = [
-		toCss(
-			Object.fromEntries(
-				Object.entries(themes)
-					.filter(([selector]) => {
-						const theme = (tokenize(selector)[0] as AttributeToken).value!
-
-						if (options.themes === false) return theme === 'light'
-						if (Array.isArray(options.themes))
-							return options.themes.includes(theme)
-
-						return true
-					})
-					.map(([selector, colors], index) => {
-						const theme = (tokenize(selector)[0] as AttributeToken).value!
-						const isDefault = Array.isArray(options.themes)
-							? index === 0
-							: theme === 'light'
-
-						return [
-							isDefault ? `:root, ${selector}` : selector,
-							Object.fromEntries(
-								Object.entries(colorFunctions.convertToHsl(colors)).map(
-									([prop, value]) => [prop, replaceSpace(value)],
-								),
-							),
-						]
-					}),
-			),
-		),
-		...keyframes,
-	]
+	const preflights = [...keyframes]
 
 	if (options.base) preflights.unshift(replaceSlash(replacePrefix(toCss(base))))
+	colorFunctions.injectThemes(
+		(theme) => {
+			preflights.push(replaceSpace(toCss(theme)))
+		},
+		// @ts-expect-error Return never
+		(key) => {
+			if (key === 'daisyui.themes') return options.themes
+			if (key === 'daisyui.darkTheme') return options.darkTheme
+		},
+		themes,
+	)
 
 	return {
 		name: 'unocss-preset-daisy',

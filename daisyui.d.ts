@@ -66,7 +66,11 @@ declare module 'daisyui/src/colors/themes.js' {
 }
 
 declare module 'daisyui/src/colors/functions.js' {
-	export function convertToHsl(
-		input: Record<string, string>,
-	): Record<string, string>
+	import type {CssInJs} from 'postcss-js'
+
+	export function injectThemes(
+		addBase: (theme: CssInJs) => void,
+		config: (key: string) => unknown,
+		themes: Record<string, Record<string, string>>,
+	): void
 }

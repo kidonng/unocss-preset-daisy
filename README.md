@@ -73,7 +73,7 @@ export default defineNuxtConfig({
 
 ## Config
 
-This preset accepts [the same config as daisyUI](https://daisyui.com/docs/config/) (except for `logs`, `prefix` and `darkTheme`).
+This preset accepts [the same config as daisyUI](https://daisyui.com/docs/config/) (except for `logs` and `prefix`).
 
 ```js
 {
@@ -86,30 +86,6 @@ This preset accepts [the same config as daisyUI](https://daisyui.com/docs/config
 	],
 }
 ```
-
-### Custom themes
-
-Use [UnoCSS's theming system](https://github.com/unocss/unocss#extend-theme) to customize the theme.
-
-```js
-{
-	presets: [presetUno(), presetDaisy()],
-	theme: {
-		colors: {
-			// Refer to https://daisyui.com/docs/colors/ for colors
-			neutral: 'red',
-			// Use camelCase instead of kebab-case (e.g. `neutral-focus`)
-			neutralFocus: 'green',
-			// Use object instead of hyphen for color grades/numbers (e.g. `base-100`)
-			base: {
-				100: 'blue',
-			},
-		},
-	},
-}
-```
-
-For details, please read [issue #9](https://github.com/kidonng/unocss-preset-daisy/issues/9#issuecomment-1452292840).
 
 ## Limitations
 
