@@ -58,6 +58,7 @@ export const presetDaisy = (
 
 	for (const node of styles.flatMap((style) => parse(style).nodes)) {
 		const isAtRule = node.type === 'atrule'
+		// @keyframes
 		if (isAtRule && node.name === 'keyframes') {
 			keyframes.push(String(node))
 			continue
@@ -69,7 +70,11 @@ export const presetDaisy = (
 		let selector = rule.selectors[0]!
 		// Skip modifiers
 		if (
+			// .collapse-open -> .collapse
+			// https://github.com/saadeghi/daisyui/blob/5c725a0778dd119c2016b8ea31bc1077a20e8c3b/src/components/styled/collapse.css#L57-L58
 			selector.startsWith('.collapse-open') ||
+			// .modal-open -> .modal-toggle
+			// https://github.com/saadeghi/daisyui/blob/5c725a0778dd119c2016b8ea31bc1077a20e8c3b/src/components/styled/modal.css#L14-L15
 			selector.startsWith('.modal-open')
 		)
 			selector = rule.selectors[1]!
@@ -80,13 +85,17 @@ export const presetDaisy = (
 
 		if (token.type === 'class') {
 			// Resolve conflicts with @unocss/preset-wind `link:` variant
+			// .link-* -> .link
 			if (selector.startsWith('.link-')) base = 'link'
+			// .btn-outline.btn-* -> .btn-*
 			if (selector.startsWith('.btn-outline.btn-'))
 				base = (tokens[1] as ClassToken).name
 			base = token.name
 		} else if (token.type === 'pseudo-class' && token.name === 'where')
+			// :where(.foo) -> .foo
 			base = (tokenize(token.argument!)[0] as ClassToken).name
 		else if (['[dir="rtl"]', ':root'].includes(token.content))
+			// Skip prefixes
 			base = (tokens[2] as ClassToken).name
 
 		rules.set(base, (rules.get(base) ?? '') + String(rule) + '\n')
