@@ -21,9 +21,11 @@ const toCss = (object: CssInJs) => processor.process(parse(object)).css
 
 const replacePrefix = (css: string) => css.replace(/--tw-/g, '--un-')
 // UnoCSS uses comma syntax
+// var(--foo) / 0.1 -> var(--foo), 0.1
 const replaceSlash = (css: string) => css.replace(/\) \/ /g, '), ')
 const replaceSpace = (css: string) =>
 	// HSL
+	// 123 4% 5% -> 123, 4%, 5%
 	css.replace(/([\d.]+) ([\d.%]+) ([\d.%]+)/g, '$1, $2, $3')
 
 const defaultOptions = {
@@ -64,7 +66,7 @@ export const presetDaisy = (
 			continue
 		}
 
-		// Unwrap `@media` if necessary
+		// Unwrap @media if necessary
 		const rule = (isAtRule ? node.nodes[0]! : node) as Rule
 
 		let selector = rule.selectors[0]!
@@ -84,7 +86,7 @@ export const presetDaisy = (
 		let base = ''
 
 		if (token.type === 'class') {
-			// Resolve conflicts with @unocss/preset-wind `link:` variant
+			// Resolve conflicts with @unocss/preset-wind link variant
 			// .link-* -> .link
 			if (selector.startsWith('.link-')) base = 'link'
 			// .btn-outline.btn-* -> .btn-*
@@ -101,7 +103,7 @@ export const presetDaisy = (
 		rules.set(base, (rules.get(base) ?? '') + String(rule) + '\n')
 	}
 
-	// Move `.btn-outline` after `.btn-*`
+	// Move .btn-outline after .btn-*
 	const btnOutline = rules.get('btn-outline')!
 	rules.delete('btn-outline')
 	rules.set('btn-outline', btnOutline)
@@ -135,7 +137,7 @@ export const presetDaisy = (
 					Object.entries(colors)
 						.filter(
 							([color]) =>
-								// Already in preset-mini
+								// Already in @unocss/preset-mini
 								// https://github.com/unocss/unocss/blob/0f7efcba592e71d81fbb295332b27e6894a0b4fa/packages/preset-mini/src/_theme/colors.ts#L11-L12
 								!['transparent', 'current'].includes(color) &&
 								// Added below
