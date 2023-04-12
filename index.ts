@@ -49,16 +49,14 @@ export const presetDaisy = (
 
 	const styles = [
 		options.styled
-			? options.rtl
-				? styledRtl
-				: styled
-			: options.rtl
-			? unstyledRtl
-			: unstyled,
+			? (options.rtl ? styledRtl : styled)
+			: (options.rtl ? unstyledRtl : unstyled),
 	]
-	if (options.utils) styles.push(utilities, utilitiesUnstyled, utilitiesStyled)
+	if (options.utils) {
+		styles.push(utilities, utilitiesUnstyled, utilitiesStyled)
+	}
 
-	for (const node of styles.flatMap((style) => parse(style).nodes)) {
+	for (const node of styles.flatMap(style => parse(style).nodes)) {
 		const isAtRule = node.type === 'atrule'
 		// @keyframes
 		if (isAtRule && node.name === 'keyframes') {
@@ -74,12 +72,13 @@ export const presetDaisy = (
 		if (
 			// .collapse-open -> .collapse
 			// https://github.com/saadeghi/daisyui/blob/5c725a0778dd119c2016b8ea31bc1077a20e8c3b/src/components/styled/collapse.css#L57-L58
-			selector.startsWith('.collapse-open') ||
+			selector.startsWith('.collapse-open')
 			// .modal-open -> .modal-toggle
 			// https://github.com/saadeghi/daisyui/blob/5c725a0778dd119c2016b8ea31bc1077a20e8c3b/src/components/styled/modal.css#L14-L15
-			selector.startsWith('.modal-open')
-		)
+			|| selector.startsWith('.modal-open')
+		) {
 			selector = rule.selectors[1]!
+		}
 
 		const tokens = tokenize(selector)
 		const token = tokens[0]!
@@ -88,17 +87,23 @@ export const presetDaisy = (
 		if (token.type === 'class') {
 			// Resolve conflicts with @unocss/preset-wind link variant
 			// .link-* -> .link
-			if (selector.startsWith('.link-')) base = 'link'
+			if (selector.startsWith('.link-')) {
+				base = 'link'
+			}
+
 			// .btn-outline.btn-* -> .btn-*
-			if (selector.startsWith('.btn-outline.btn-'))
+			if (selector.startsWith('.btn-outline.btn-')) {
 				base = (tokens[1] as ClassToken).name
+			}
+
 			base = token.name
-		} else if (token.type === 'pseudo-class' && token.name === 'where')
+		} else if (token.type === 'pseudo-class' && token.name === 'where') {
 			// :where(.foo) -> .foo
 			base = (tokenize(token.argument!)[0] as ClassToken).name
-		else if (['[dir="rtl"]', ':root'].includes(token.content))
+		} else if (['[dir="rtl"]', ':root'].includes(token.content)) {
 			// Skip prefixes
 			base = (tokens[2] as ClassToken).name
+		}
 
 		rules.set(base, (rules.get(base) ?? '') + String(rule) + '\n')
 	}
@@ -110,15 +115,23 @@ export const presetDaisy = (
 
 	const preflights = [...keyframes]
 
-	if (options.base) preflights.unshift(replaceSlash(replacePrefix(toCss(base))))
+	if (options.base) {
+		preflights.unshift(replaceSlash(replacePrefix(toCss(base))))
+	}
+
 	colorFunctions.injectThemes(
-		(theme) => {
+		theme => {
 			preflights.push(replaceSpace(toCss(theme)))
 		},
 		// @ts-expect-error Return never
-		(key) => {
-			if (key === 'daisyui.themes') return options.themes
-			if (key === 'daisyui.darkTheme') return options.darkTheme
+		key => {
+			if (key === 'daisyui.themes') {
+				return options.themes
+			}
+
+			if (key === 'daisyui.darkTheme') {
+				return options.darkTheme
+			}
 		},
 		themes,
 	)
@@ -139,9 +152,9 @@ export const presetDaisy = (
 							([color]) =>
 								// Already in @unocss/preset-mini
 								// https://github.com/unocss/unocss/blob/0f7efcba592e71d81fbb295332b27e6894a0b4fa/packages/preset-mini/src/_theme/colors.ts#L11-L12
-								!['transparent', 'current'].includes(color) &&
+								!['transparent', 'current'].includes(color)
 								// Added below
-								!color.startsWith('base'),
+								&& !color.startsWith('base'),
 						)
 						.map(([color, value]) => [camelCase(color), value({})]),
 				),
@@ -153,7 +166,7 @@ export const presetDaisy = (
 			},
 		},
 		rules: [...rules].map(
-			(rule) =>
+			rule =>
 				[
 					new RegExp(`^${rule[0]}$`),
 					() => replaceSlash(replacePrefix(rule[1])),
