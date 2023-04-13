@@ -3,7 +3,6 @@ import {parse, type CssInJs} from 'postcss-js'
 import {tokenize, type ClassToken} from 'parsel-js'
 import type {Preset, DynamicRule} from 'unocss'
 import camelCase from 'camelcase'
-
 import colors from 'daisyui/src/colors/index.js'
 import utilities from 'daisyui/dist/utilities.js'
 import base from 'daisyui/dist/base.js'
@@ -171,7 +170,7 @@ export const presetDaisy = (
 					new RegExp(`^${rule[0]}$`),
 					() => replaceSlash(replacePrefix(rule[1])),
 					{layer: 'components'},
-				] as DynamicRule,
+				] satisfies DynamicRule,
 		),
 	}
 }
