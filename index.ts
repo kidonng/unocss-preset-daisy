@@ -66,19 +66,7 @@ export const presetDaisy = (
 		// Unwrap @media if necessary
 		const rule = (isAtRule ? node.nodes[0]! : node) as Rule
 
-		let selector = rule.selectors[0]!
-		// Skip modifiers
-		if (
-			// .collapse-open -> .collapse
-			// https://github.com/saadeghi/daisyui/blob/5c725a0778dd119c2016b8ea31bc1077a20e8c3b/src/components/styled/collapse.css#L57-L58
-			selector.startsWith('.collapse-open')
-			// .modal-open -> .modal-toggle
-			// https://github.com/saadeghi/daisyui/blob/5c725a0778dd119c2016b8ea31bc1077a20e8c3b/src/components/styled/modal.css#L14-L15
-			|| selector.startsWith('.modal-open')
-		) {
-			selector = rule.selectors[1]!
-		}
-
+		const selector = rule.selectors[0]!
 		const tokens = tokenize(selector)
 		const token = tokens[0]!
 		let base = ''
@@ -88,20 +76,23 @@ export const presetDaisy = (
 			// .link-* -> .link
 			if (selector.startsWith('.link-')) {
 				base = 'link'
-			}
-
-			// .btn-outline.btn-* -> .btn-*
-			if (selector.startsWith('.btn-outline.btn-')) {
+			} else if (selector.startsWith('.btn-outline.btn-')) {
+				// .btn-outline.btn-* -> .btn-*
 				base = (tokens[1] as ClassToken).name
+			} else if (selector.startsWith('.modal-open')) {
+				base = 'modal'
+			} else {
+				base = token.name
 			}
-
-			base = token.name
 		} else if (token.type === 'pseudo-class' && token.name === 'where') {
 			// :where(.foo) -> .foo
 			base = (tokenize(token.argument!)[0] as ClassToken).name
 		} else if (['[dir="rtl"]', ':root'].includes(token.content)) {
-			// Skip prefixes
-			base = (tokens[2] as ClassToken).name
+			// Special case for https://github.com/saadeghi/daisyui/blob/6db14181733915278621d9b2d128b0af43c52323/src/components/unstyled/modal.css#LL28C1-L28C89
+			base = tokens[1]!.content.includes('.modal-open')
+				? 'modal'
+				// Skip prefixes
+				: (tokens[2] as ClassToken).name
 		}
 
 		rules.set(base, (rules.get(base) ?? '') + String(rule) + '\n')
