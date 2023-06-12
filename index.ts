@@ -77,9 +77,6 @@ export const presetDaisy = (
 			// .link-* -> .link
 			if (selector.startsWith('.link-')) {
 				base = 'link'
-			} else if (selector.startsWith('.btn-outline.btn-')) {
-				// .btn-outline.btn-* -> .btn-*
-				base = (tokens[1] as ClassToken).name
 			} else if (selector.startsWith('.modal-open')) {
 				base = 'modal'
 			} else {
@@ -98,11 +95,6 @@ export const presetDaisy = (
 
 		rules.set(base, (rules.get(base) ?? '') + String(rule) + '\n')
 	}
-
-	// Move .btn-outline after .btn-*
-	const btnOutline = rules.get('btn-outline')!
-	rules.delete('btn-outline')
-	rules.set('btn-outline', btnOutline)
 
 	const preflights = [...keyframes]
 
