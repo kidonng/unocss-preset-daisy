@@ -15,8 +15,8 @@ import utilitiesStyled from 'daisyui/dist/utilities-styled.js'
 import themes from 'daisyui/src/theming/themes.js'
 import colorFunctions from 'daisyui/src/theming/functions.js'
 
-const processor = postcss.default()
-const toCss = (object: CssInJs) => processor.process(parse(object)).css
+const processor = postcss()
+const toCss = (object: CssInJs) => processor.process(object, {parser: parse}).css
 
 const replacePrefix = (css: string) => css.replace(/--tw-/g, '--un-')
 // UnoCSS uses comma syntax
