@@ -19,6 +19,7 @@
 		<div>
 			<h4 class="font-bold">Buttons with brand colors</h4>
 			<button class="btn">Button</button>
+			<button class="btn btn-neutral">Neutral</button>
 			<button class="btn btn-primary">Primary</button>
 			<button class="btn btn-secondary">Secondary</button>
 			<button class="btn btn-accent">Accent</button>
@@ -34,10 +35,10 @@
 		</div>
 		<div>
 			<h4 class="font-bold">Outline buttons</h4>
-			<button class="btn btn-outline">Button</button>
-			<button class="btn btn-outline btn-primary">Button</button>
-			<button class="btn btn-outline btn-secondary">Button</button>
-			<button class="btn btn-outline btn-accent">Button</button>
+			<button class="btn btn-outline">Default</button>
+			<button class="btn btn-outline btn-primary">Primary</button>
+			<button class="btn btn-outline btn-secondary">Secondary</button>
+			<button class="btn btn-outline btn-accent">Accent</button>
 		</div>
 		<div>
 			<h4 class="font-bold">Button sizes</h4>
@@ -90,7 +91,8 @@
 
 	<div class="my-4">
 		<h3 class="font-bold my-1 text-xl">Badge</h3>
-		<div class="badge">neutral</div>
+		<div class="badge">default</div>
+		<div class="badge badge-neutral">neutral</div>
 		<div class="badge badge-primary">primary</div>
 		<div class="badge badge-secondary">secondary</div>
 		<div class="badge badge-accent">accent</div>
@@ -279,7 +281,7 @@
 
 	<div class="my-4">
 		<h3 class="font-bold my-1 text-xl">Menu</h3>
-		<ul class="menu bg-base-100 w-56 rounded-box shadow-xl">
+		<ul class="menu bg-base-200 w-56 rounded-box">
 			<li><a>Item 1</a></li>
 			<li><a>Item 2</a></li>
 			<li><a>Item 3</a></li>
@@ -293,29 +295,19 @@
 				<a class="btn btn-ghost normal-case text-xl">daisyUI</a>
 			</div>
 			<div class="flex-none">
-				<ul class="menu menu-horizontal p-0">
-					<li><a>Item 1</a></li>
-					<li tabindex="0">
-						<a>
-							Parent
-							<svg
-								class="fill-current"
-								xmlns="http://www.w3.org/2000/svg"
-								width="20"
-								height="20"
-								viewBox="0 0 24 24"
-							>
-								<path
-									d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"
-								/>
-							</svg>
-						</a>
-						<ul class="p-2 bg-base-100">
-							<li><a>Submenu 1</a></li>
-							<li><a>Submenu 2</a></li>
-						</ul>
+				<ul class="menu menu-horizontal px-1">
+					<li><a>Link</a></li>
+					<li>
+						<details>
+							<summary>
+								Parent
+							</summary>
+							<ul class="p-2 bg-base-100">
+								<li><a>Link 1</a></li>
+								<li><a>Link 2</a></li>
+							</ul>
+						</details>
 					</li>
-					<li><a>Item 3</a></li>
 				</ul>
 			</div>
 		</div>
@@ -323,11 +315,11 @@
 
 	<div class="my-4">
 		<h3 class="font-bold my-1 text-xl">Pagination</h3>
-		<div class="btn-group">
-			<button class="btn">1</button>
-			<button class="btn btn-active">2</button>
-			<button class="btn">3</button>
-			<button class="btn">4</button>
+		<div class="join">
+			<button class="join-item btn">1</button>
+			<button class="join-item btn btn-active">2</button>
+			<button class="join-item btn">3</button>
+			<button class="join-item btn">4</button>
 		</div>
 	</div>
 
@@ -355,7 +347,7 @@
 	<div class="my-4">
 		<h3 class="font-bold my-1 text-xl">Code</h3>
 		<div class="mockup-code">
-			<pre data-prefix="$"><code>npm i daisyui</code></pre>
+			<pre data-prefix="$"><code>npm i unocss-preset-daisy</code></pre>
 			<pre data-prefix=">" class="text-warning"><code>installing...</code></pre>
 			<pre data-prefix=">" class="text-success"><code>Done!</code></pre>
 		</div>
