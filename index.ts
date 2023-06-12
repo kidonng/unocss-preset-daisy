@@ -2,7 +2,7 @@ import postcss, {type Rule} from 'postcss'
 import autoprefixer from 'autoprefixer'
 import {parse, type CssInJs} from 'postcss-js'
 import {tokenize, type ClassToken} from 'parsel-js'
-import type {Preset, DynamicRule} from 'unocss'
+import type {Preset, DynamicRule, Preflight} from 'unocss'
 import camelCase from 'camelcase'
 import colors from 'daisyui/src/theming/index.js'
 import utilities from 'daisyui/dist/utilities.js'
@@ -96,15 +96,29 @@ export const presetDaisy = (
 		rules.set(base, (rules.get(base) ?? '') + String(rule) + '\n')
 	}
 
-	const preflights = [...keyframes]
+	const preflights: Preflight[] = [
+		{
+			// eslint-disable-next-line @typescript-eslint/naming-convention
+			getCSS: () => keyframes.join('\n'),
+			layer: 'daisy-keyframes',
+		},
+	]
 
 	if (options.base) {
-		preflights.unshift(replaceSlash(replacePrefix(process(base).css)))
+		preflights.unshift({
+			// eslint-disable-next-line @typescript-eslint/naming-convention
+			getCSS: () => replaceSlash(replacePrefix(process(base).css)),
+			layer: 'daisy-base',
+		})
 	}
 
 	colorFunctions.injectThemes(
 		theme => {
-			preflights.push(replaceSpace(process(theme).css))
+			preflights.push({
+				// eslint-disable-next-line @typescript-eslint/naming-convention
+				getCSS: () => replaceSpace(process(theme).css),
+				layer: 'daisy-themes',
+			})
 		},
 		// @ts-expect-error Return never
 		key => {
@@ -122,12 +136,7 @@ export const presetDaisy = (
 
 	return {
 		name: 'unocss-preset-daisy',
-		preflights: [
-			{
-				// eslint-disable-next-line @typescript-eslint/naming-convention
-				getCSS: () => preflights.join('\n'),
-			},
-		],
+		preflights,
 		theme: {
 			colors: {
 				...Object.fromEntries(
@@ -154,7 +163,7 @@ export const presetDaisy = (
 				[
 					new RegExp(`^${rule[0]}$`),
 					() => replaceSlash(replacePrefix(rule[1])),
-					{layer: 'components'},
+					{layer: 'daisy-components'},
 				] satisfies DynamicRule,
 		),
 	}
