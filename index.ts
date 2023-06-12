@@ -159,11 +159,15 @@ export const presetDaisy = (
 			},
 		},
 		rules: [...rules].map(
-			rule =>
+			([base, rule]) =>
 				[
-					new RegExp(`^${rule[0]}$`),
-					() => replaceSlash(replacePrefix(rule[1])),
-					{layer: 'daisy-components'},
+					new RegExp(`^${base}$`),
+					() => replaceSlash(replacePrefix(rule)),
+					{
+						layer: base.startsWith('checkbox-')
+							? 'daisy-components-post'
+							: 'daisy-components',
+					},
 				] satisfies DynamicRule,
 		),
 	}
