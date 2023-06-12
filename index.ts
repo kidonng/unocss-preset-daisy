@@ -1,4 +1,5 @@
 import postcss, {type Rule} from 'postcss'
+import autoprefixer from 'autoprefixer'
 import {parse, type CssInJs} from 'postcss-js'
 import {tokenize, type ClassToken} from 'parsel-js'
 import type {Preset, DynamicRule} from 'unocss'
@@ -15,8 +16,8 @@ import utilitiesStyled from 'daisyui/dist/utilities-styled.js'
 import themes from 'daisyui/src/theming/themes.js'
 import colorFunctions from 'daisyui/src/theming/functions.js'
 
-const processor = postcss()
-const toCss = (object: CssInJs) => processor.process(object, {parser: parse}).css
+const processor = postcss(autoprefixer)
+const process = (object: CssInJs) => processor.process(object, {parser: parse})
 
 const replacePrefix = (css: string) => css.replace(/--tw-/g, '--un-')
 // UnoCSS uses comma syntax
@@ -55,7 +56,7 @@ export const presetDaisy = (
 		styles.push(utilities, utilitiesUnstyled, utilitiesStyled)
 	}
 
-	for (const node of styles.flatMap(style => parse(style).nodes)) {
+	for (const node of styles.flatMap(style => process(style).root.nodes)) {
 		const isAtRule = node.type === 'atrule'
 		// @keyframes
 		if (isAtRule && node.name === 'keyframes') {
@@ -106,12 +107,12 @@ export const presetDaisy = (
 	const preflights = [...keyframes]
 
 	if (options.base) {
-		preflights.unshift(replaceSlash(replacePrefix(toCss(base))))
+		preflights.unshift(replaceSlash(replacePrefix(process(base).css)))
 	}
 
 	colorFunctions.injectThemes(
 		theme => {
-			preflights.push(replaceSpace(toCss(theme)))
+			preflights.push(replaceSpace(process(theme).css))
 		},
 		// @ts-expect-error Return never
 		key => {
