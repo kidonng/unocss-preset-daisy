@@ -133,6 +133,7 @@ export const presetDaisy = (
 			}
 		},
 		themes,
+		'hsl',
 	)
 
 	return {
@@ -155,12 +156,12 @@ export const presetDaisy = (
 								// Added below
 								&& !color.startsWith('base'),
 						)
-						.map(([color, value]) => [camelCase(color), value({})]),
+						.map(([color, value]) => [camelCase(color), value]),
 				),
 				base: Object.fromEntries(
 					Object.entries(colors)
 						.filter(([color]) => color.startsWith('base'))
-						.map(([color, value]) => [color.replace('base-', ''), value({})]),
+						.map(([color, value]) => [color.replace('base-', ''), value]),
 				),
 			},
 		},

@@ -1,6 +1,6 @@
 declare module 'daisyui/src/theming/index.js' {
 	// The value can also be a string, ignore them as they are filtered
-	const colors: Record<string, (options: {opacityValue?: string}) => string>
+	const colors: Record<string, string>
 	export default colors
 }
 
@@ -72,5 +72,6 @@ declare module 'daisyui/src/theming/functions.js' {
 		addBase: (theme: CssInJs) => void,
 		config: (key: string) => unknown,
 		themes: Record<string, Record<string, string>>,
+		colorFunction: 'hsl' | 'lch'
 	): void
 }
