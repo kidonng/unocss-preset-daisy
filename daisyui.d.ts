@@ -1,4 +1,4 @@
-declare module 'daisyui/src/colors/index.js' {
+declare module 'daisyui/src/theming/index.js' {
 	// The value can also be a string, ignore them as they are filtered
 	const colors: Record<string, (options: {opacityValue?: string}) => string>
 	export default colors
@@ -60,12 +60,12 @@ declare module 'daisyui/dist/utilities-styled.js' {
 	export default utilitiesStyled
 }
 
-declare module 'daisyui/src/colors/themes.js' {
+declare module 'daisyui/src/theming/themes.js' {
 	const themes: Record<string, Record<string, string>>
 	export default themes
 }
 
-declare module 'daisyui/src/colors/functions.js' {
+declare module 'daisyui/src/theming/functions.js' {
 	import type {CssInJs} from 'postcss-js'
 
 	export function injectThemes(
