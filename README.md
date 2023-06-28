@@ -48,6 +48,7 @@ export default defineConfig({
 	integrations: [
 		unocss({
 			presets: [presetUno(), presetDaisy()],
+			injectReset: true,
 		}),
 	],
 })
