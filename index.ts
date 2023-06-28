@@ -30,7 +30,7 @@ const replaceSpace = (css: string) =>
 
 const defaultOptions = {
 	styled: true,
-	themes: true as
+	themes: false as
 		| boolean
 		| Array<string | Record<string, Record<string, string>>>,
 	base: true,
