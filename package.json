@@ -25,8 +25,8 @@
 		"postcss-js": "^4.0.1"
 	},
 	"peerDependencies": {
-		"daisyui": "^3.1.0",
-		"unocss": "^0.53.1"
+		"daisyui": "^3.0.0",
+		"unocss": ">0.53.0"
 	},
 	"devDependencies": {
 		"@iconify-json/octicon": "^1.1.48",
