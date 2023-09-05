@@ -1,4 +1,4 @@
-import postcss, {type Rule} from 'postcss'
+import postcss, {type Rule, type ChildNode} from 'postcss'
 import autoprefixer from 'autoprefixer'
 import {parse, type CssInJs} from 'postcss-js'
 import {tokenize, type ClassToken} from 'parsel-js'
@@ -19,14 +19,14 @@ import colorFunctions from 'daisyui/src/theming/functions.js'
 const processor = postcss(autoprefixer)
 const process = (object: CssInJs) => processor.process(object, {parser: parse})
 
-const replacePrefix = (css: string) => css.replace(/--tw-/g, '--un-')
+const replacePrefix = (css: string) => css.replaceAll('--tw-', '--un-')
 // UnoCSS uses comma syntax
 // var(--foo) / 0.1 -> var(--foo), 0.1
-const replaceSlash = (css: string) => css.replace(/\) \/ /g, '), ')
+const replaceSlash = (css: string) => css.replaceAll(') / ', '), ')
 const replaceSpace = (css: string) =>
 	// HSL
 	// 123 4% 5% -> 123, 4%, 5%
-	css.replace(/([\d.]+) ([\d.%]+) ([\d.%]+)/g, '$1, $2, $3')
+	css.replaceAll(/([\d.]+) ([\d.%]+) ([\d.%]+)/g, '$1, $2, $3')
 
 const defaultOptions = {
 	styled: true,
@@ -56,7 +56,7 @@ export const presetDaisy = (
 		styles.push(utilities, utilitiesUnstyled, utilitiesStyled)
 	}
 
-	for (const node of styles.flatMap(style => process(style).root.nodes)) {
+	for (const node of styles.flatMap(style => process(style).root.nodes as ChildNode[])) {
 		const isAtRule = node.type === 'atrule'
 		// @keyframes
 		if (isAtRule && node.name === 'keyframes') {
