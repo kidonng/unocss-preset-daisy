@@ -164,7 +164,7 @@ export const presetDaisy = (
 					new RegExp(`^${base}$`),
 					() => replaceSlash(replacePrefix(rule)),
 					{
-						layer: base.startsWith('checkbox-')
+						layer: base.startsWith('checkbox-') || base.startsWith('btn-circle') || base.startsWith('btn-square')
 							? 'daisy-components-post'
 							: 'daisy-components',
 					},
