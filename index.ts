@@ -20,13 +20,6 @@ const processor = postcss(autoprefixer)
 const process = (object: CssInJs) => processor.process(object, {parser: parse})
 
 const replacePrefix = (css: string) => css.replaceAll('--tw-', '--un-')
-// UnoCSS uses comma syntax
-// var(--foo) / 0.1 -> var(--foo), 0.1
-const replaceSlash = (css: string) => css.replaceAll(') / ', '), ')
-const replaceSpace = (css: string) =>
-	// HSL
-	// 123 4% 5% -> 123, 4%, 5%
-	css.replaceAll(/([\d.]+) ([\d.%]+) ([\d.%]+)/g, '$1, $2, $3')
 
 const defaultOptions = {
 	styled: true,
@@ -107,7 +100,7 @@ export const presetDaisy = (
 	if (options.base) {
 		preflights.unshift({
 			// eslint-disable-next-line @typescript-eslint/naming-convention
-			getCSS: () => replaceSlash(replacePrefix(process(base).css)),
+			getCSS: () => replacePrefix(process(base).css),
 			layer: 'daisy-base',
 		})
 	}
@@ -116,7 +109,7 @@ export const presetDaisy = (
 		theme => {
 			preflights.push({
 				// eslint-disable-next-line @typescript-eslint/naming-convention
-				getCSS: () => replaceSpace(process(theme).css),
+				getCSS: () => process(theme).css,
 				layer: 'daisy-themes',
 			})
 		},
@@ -162,7 +155,7 @@ export const presetDaisy = (
 			([base, rule]) =>
 				[
 					new RegExp(`^${base}$`),
-					() => replaceSlash(replacePrefix(rule)),
+					() => replacePrefix(rule),
 					{
 						layer: base.startsWith('checkbox-')
 							? 'daisy-components-post'
