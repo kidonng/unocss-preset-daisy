@@ -1,4 +1,13 @@
 {
 	"extends": "@sindresorhus/tsconfig",
-	"files": ["index.ts", "daisyui.d.ts"]
+	"compilerOptions": {
+		"module": "Node16",
+		"moduleResolution": "Node16",
+		"outDir": "dist",
+		"target": "ES2015",
+	},
+	"files": [
+		"index.ts",
+		"daisyui.d.ts"
+	]
 }
