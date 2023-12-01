@@ -1,392 +1,397 @@
-<!DOCTYPE html>
-<meta charset="utf-8" />
-<title>UnoCSS + daisyUI</title>
-<meta name="color-scheme" content="light dark" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>UnoCSS + daisyUI</title>
+    <meta name="color-scheme" content="light dark" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
 
-<body class="max-w-screen-md mx-auto p-4">
-	<div class="flex items-center">
-		<h1 class="text-5xl font-300 mr-4">UnoCSS + daisyUI</h1>
-		<a href="https://github.com/kidonng/unocss-preset-daisy">
-			<div class="i-octicon-mark-github-16 text-3xl hover:opacity-50"></div>
-		</a>
-	</div>
+  <body class="max-w-screen-md mx-auto p-4">
+    <div class="flex items-center">
+      <h1 class="text-5xl font-300 mr-4">UnoCSS + daisyUI</h1>
+      <a href="https://github.com/kidonng/unocss-preset-daisy">
+        <div class="i-octicon-mark-github-16 text-3xl hover:opacity-50"></div>
+      </a>
+    </div>
 
-	<h2 class="my-2 text-3xl">Actions</h2>
+    <h2 class="my-2 text-3xl">Actions</h2>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Button</h3>
-		<div>
-			<h4 class="font-bold">Buttons with brand colors</h4>
-			<button class="btn">Button</button>
-			<button class="btn btn-neutral">Neutral</button>
-			<button class="btn btn-primary">Primary</button>
-			<button class="btn btn-secondary">Secondary</button>
-			<button class="btn btn-accent">Accent</button>
-			<button class="btn btn-ghost">Ghost</button>
-			<button class="btn btn-link">Link</button>
-		</div>
-		<div>
-			<h4 class="font-bold">Buttons with state colors</h4>
-			<button class="btn btn-info">Info</button>
-			<button class="btn btn-success">Success</button>
-			<button class="btn btn-warning">Warning</button>
-			<button class="btn btn-error">Error</button>
-		</div>
-		<div>
-			<h4 class="font-bold">Outline buttons</h4>
-			<button class="btn btn-outline">Default</button>
-			<button class="btn btn-outline btn-primary">Primary</button>
-			<button class="btn btn-outline btn-secondary">Secondary</button>
-			<button class="btn btn-outline btn-accent">Accent</button>
-		</div>
-		<div>
-			<h4 class="font-bold">Button sizes</h4>
-			<button class="btn btn-lg">Large</button>
-			<button class="btn">Normal</button>
-			<button class="btn btn-sm">Small</button>
-			<button class="btn btn-xs">Tiny</button>
-		</div>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Button</h3>
+      <div>
+        <h4 class="font-bold">Buttons with brand colors</h4>
+        <button class="btn">Button</button>
+        <button class="btn btn-neutral">Neutral</button>
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-accent">Accent</button>
+        <button class="btn btn-ghost">Ghost</button>
+        <button class="btn btn-link">Link</button>
+      </div>
+      <div>
+        <h4 class="font-bold">Buttons with state colors</h4>
+        <button class="btn btn-info">Info</button>
+        <button class="btn btn-success">Success</button>
+        <button class="btn btn-warning">Warning</button>
+        <button class="btn btn-error">Error</button>
+      </div>
+      <div>
+        <h4 class="font-bold">Outline buttons</h4>
+        <button class="btn btn-outline">Default</button>
+        <button class="btn btn-outline btn-primary">Primary</button>
+        <button class="btn btn-outline btn-secondary">Secondary</button>
+        <button class="btn btn-outline btn-accent">Accent</button>
+      </div>
+      <div>
+        <h4 class="font-bold">Button sizes</h4>
+        <button class="btn btn-lg">Large</button>
+        <button class="btn">Normal</button>
+        <button class="btn btn-sm">Small</button>
+        <button class="btn btn-xs">Tiny</button>
+      </div>
+    </div>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Dropdown</h3>
-		<div class="dropdown">
-			<label tabindex="0" class="btn m-1">Click</label>
-			<ul
-				tabindex="0"
-				class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
-			>
-				<li><a>Item 1</a></li>
-				<li><a>Item 2</a></li>
-			</ul>
-		</div>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Dropdown</h3>
+      <div class="dropdown">
+        <label tabindex="0" class="btn m-1">Click</label>
+        <ul
+          tabindex="0"
+          class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52"
+        >
+          <li><a>Item 1</a></li>
+          <li><a>Item 2</a></li>
+        </ul>
+      </div>
+    </div>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Modal</h3>
-		<label for="my-modal" class="btn modal-button">open modal</label>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Modal</h3>
+      <label for="my-modal" class="btn modal-button">open modal</label>
+    </div>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Swap</h3>
-		<label class="swap">
-			<input type="checkbox" />
-			<div class="swap-on">ON</div>
-			<div class="swap-off">OFF</div>
-		</label>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Swap</h3>
+      <label class="swap">
+        <input type="checkbox" />
+        <div class="swap-on">ON</div>
+        <div class="swap-off">OFF</div>
+      </label>
+    </div>
 
-	<h2 class="my-2 text-3xl">Data display</h2>
+    <h2 class="my-2 text-3xl">Data display</h2>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Alert</h3>
-		<div class="alert alert-success shadow-lg">
-			<div>
-				✅
-				<span>Your purchase has been confirmed!</span>
-			</div>
-		</div>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Alert</h3>
+      <div class="alert alert-success shadow-lg">
+        <div>
+          ✅
+          <span>Your purchase has been confirmed!</span>
+        </div>
+      </div>
+    </div>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Badge</h3>
-		<div class="badge">default</div>
-		<div class="badge badge-neutral">neutral</div>
-		<div class="badge badge-primary">primary</div>
-		<div class="badge badge-secondary">secondary</div>
-		<div class="badge badge-accent">accent</div>
-		<div class="badge badge-ghost">ghost</div>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Badge</h3>
+      <div class="badge">default</div>
+      <div class="badge badge-neutral">neutral</div>
+      <div class="badge badge-primary">primary</div>
+      <div class="badge badge-secondary">secondary</div>
+      <div class="badge badge-accent">accent</div>
+      <div class="badge badge-ghost">ghost</div>
+    </div>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Card</h3>
-		<div class="card w-96 bg-base-100 shadow-xl">
-			<figure>
-				<img
-					src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-					alt="Shoes"
-				/>
-			</figure>
-			<div class="card-body">
-				<h3 class="font-bold card-title">Shoes!</h3>
-				<p>If a dog chews shoes whose shoes does he choose?</p>
-				<div class="card-actions justify-end">
-					<button class="btn btn-primary">Buy Now</button>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Card</h3>
+      <div class="card w-96 bg-base-100 shadow-xl">
+        <figure>
+          <img
+            src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+            alt="Shoes"
+          />
+        </figure>
+        <div class="card-body">
+          <h3 class="font-bold card-title">Shoes!</h3>
+          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <div class="card-actions justify-end">
+            <button class="btn btn-primary">Buy Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Collapse</h3>
-		<div
-			tabindex="0"
-			class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box"
-		>
-			<div class="collapse-title text-xl font-medium">
-				Focus me to see content
-			</div>
-			<div class="collapse-content">
-				<p>tabindex="0" attribute is necessary to make the div focusable</p>
-			</div>
-		</div>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Collapse</h3>
+      <div
+        tabindex="0"
+        class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box"
+      >
+        <div class="collapse-title text-xl font-medium">
+          Focus me to see content
+        </div>
+        <div class="collapse-content">
+          <p>tabindex="0" attribute is necessary to make the div focusable</p>
+        </div>
+      </div>
+    </div>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Countdown</h3>
-		<div class="grid grid-flow-col gap-5 text-center auto-cols-max">
-			<div
-				class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content"
-			>
-				<span class="countdown font-mono text-5xl">
-					<span style="--value: 42"></span>
-				</span>
-				days
-			</div>
-			<div
-				class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content"
-			>
-				<span class="countdown font-mono text-5xl">
-					<span style="--value: 12"></span>
-				</span>
-				hours
-			</div>
-			<div
-				class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content"
-			>
-				<span class="countdown font-mono text-5xl">
-					<span style="--value: 34"></span>
-				</span>
-				min
-			</div>
-			<div
-				class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content"
-			>
-				<span class="countdown font-mono text-5xl">
-					<span style="--value: 56"></span>
-				</span>
-				sec
-			</div>
-		</div>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Countdown</h3>
+      <div class="grid grid-flow-col gap-5 text-center auto-cols-max">
+        <div
+          class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content"
+        >
+          <span class="countdown font-mono text-5xl">
+            <span style="--value: 42"></span>
+          </span>
+          days
+        </div>
+        <div
+          class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content"
+        >
+          <span class="countdown font-mono text-5xl">
+            <span style="--value: 12"></span>
+          </span>
+          hours
+        </div>
+        <div
+          class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content"
+        >
+          <span class="countdown font-mono text-5xl">
+            <span style="--value: 34"></span>
+          </span>
+          min
+        </div>
+        <div
+          class="flex flex-col p-2 bg-neutral rounded-box text-neutral-content"
+        >
+          <span class="countdown font-mono text-5xl">
+            <span style="--value: 56"></span>
+          </span>
+          sec
+        </div>
+      </div>
+    </div>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Kbd</h3>
-		<kbd class="kbd">⌘</kbd>
-		<kbd class="kbd">⌥</kbd>
-		<kbd class="kbd">⇧</kbd>
-		<kbd class="kbd">⌃</kbd>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Kbd</h3>
+      <kbd class="kbd">⌘</kbd>
+      <kbd class="kbd">⌥</kbd>
+      <kbd class="kbd">⇧</kbd>
+      <kbd class="kbd">⌃</kbd>
+    </div>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Progress</h3>
-		<div class="flex flex-col gap-2">
-			<progress class="progress w-56" value="0" max="100"></progress>
-			<progress class="progress w-56" value="10" max="100"></progress>
-			<progress class="progress w-56" value="40" max="100"></progress>
-			<progress class="progress w-56" value="70" max="100"></progress>
-			<progress class="progress w-56" value="100" max="100"></progress>
-		</div>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Progress</h3>
+      <div class="flex flex-col gap-2">
+        <progress class="progress w-56" value="0" max="100"></progress>
+        <progress class="progress w-56" value="10" max="100"></progress>
+        <progress class="progress w-56" value="40" max="100"></progress>
+        <progress class="progress w-56" value="70" max="100"></progress>
+        <progress class="progress w-56" value="100" max="100"></progress>
+      </div>
+    </div>
 
-	<h2 class="my-2 text-3xl">Data Input</h2>
+    <h2 class="my-2 text-3xl">Data Input</h2>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Checkbox</h3>
-		<div class="form-control">
-			<label class="label cursor-pointer">
-				<span class="label-text">Remember me</span>
-				<input
-					type="checkbox"
-					checked="checked"
-					class="checkbox checkbox-primary"
-				/>
-			</label>
-		</div>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Checkbox</h3>
+      <div class="form-control">
+        <label class="label cursor-pointer">
+          <span class="label-text">Remember me</span>
+          <input
+            type="checkbox"
+            checked="checked"
+            class="checkbox checkbox-primary"
+          />
+        </label>
+      </div>
+    </div>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Text input</h3>
-		<div class="form-control w-full max-w-xs">
-			<label class="label">
-				<span class="label-text">What is your name?</span>
-				<span class="label-text-alt">Alt label</span>
-			</label>
-			<input
-				type="text"
-				placeholder="Type here"
-				class="input input-bordered w-full max-w-xs"
-			/>
-			<label class="label">
-				<span class="label-text-alt">Alt label</span>
-				<span class="label-text-alt">Alt label</span>
-			</label>
-		</div>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Text input</h3>
+      <div class="form-control w-full max-w-xs">
+        <label class="label">
+          <span class="label-text">What is your name?</span>
+          <span class="label-text-alt">Alt label</span>
+        </label>
+        <input
+          type="text"
+          placeholder="Type here"
+          class="input input-bordered w-full max-w-xs"
+        />
+        <label class="label">
+          <span class="label-text-alt">Alt label</span>
+          <span class="label-text-alt">Alt label</span>
+        </label>
+      </div>
+    </div>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Radio</h3>
-		<div class="form-control">
-			<label class="label cursor-pointer">
-				<span class="label-text">Red pill</span>
-				<input
-					type="radio"
-					name="radio-6"
-					class="radio checked:bg-red-500"
-					checked
-				/>
-			</label>
-		</div>
-		<div class="form-control">
-			<label class="label cursor-pointer">
-				<span class="label-text">blue pill</span>
-				<input
-					type="radio"
-					name="radio-6"
-					class="radio checked:bg-blue-500"
-					checked
-				/>
-			</label>
-		</div>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Radio</h3>
+      <div class="form-control">
+        <label class="label cursor-pointer">
+          <span class="label-text">Red pill</span>
+          <input
+            type="radio"
+            name="radio-6"
+            class="radio checked:bg-red-500"
+            checked
+          />
+        </label>
+      </div>
+      <div class="form-control">
+        <label class="label cursor-pointer">
+          <span class="label-text">blue pill</span>
+          <input
+            type="radio"
+            name="radio-6"
+            class="radio checked:bg-blue-500"
+            checked
+          />
+        </label>
+      </div>
+    </div>
 
-	<h2 class="my-2 text-3xl">Layout</h2>
+    <h2 class="my-2 text-3xl">Layout</h2>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Mask</h3>
-		<img
-			class="mask mask-squircle"
-			src="https://daisyui.com/images/stock/photo-1567653418876-5bb0e566e1c2.jpg"
-		/>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Mask</h3>
+      <img
+        class="mask mask-squircle"
+        src="https://daisyui.com/images/stock/photo-1567653418876-5bb0e566e1c2.jpg"
+      />
+    </div>
 
-	<h2 class="my-2 text-3xl">Navigation</h2>
+    <h2 class="my-2 text-3xl">Navigation</h2>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Breadcrumbs</h3>
-		<div class="text-sm breadcrumbs">
-			<ul>
-				<li><a>Home</a></li>
-				<li><a>Documents</a></li>
-				<li>Add Document</li>
-			</ul>
-		</div>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Breadcrumbs</h3>
+      <div class="text-sm breadcrumbs">
+        <ul>
+          <li><a>Home</a></li>
+          <li><a>Documents</a></li>
+          <li>Add Document</li>
+        </ul>
+      </div>
+    </div>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Link</h3>
-		<a class="link link-hover">I'm a simple link</a>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Link</h3>
+      <a class="link link-hover">I'm a simple link</a>
+    </div>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Menu</h3>
-		<ul class="menu bg-base-200 w-56 rounded-box">
-			<li><a>Item 1</a></li>
-			<li><a>Item 2</a></li>
-			<li><a>Item 3</a></li>
-		</ul>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Menu</h3>
+      <ul class="menu bg-base-200 w-56 rounded-box">
+        <li><a>Item 1</a></li>
+        <li><a>Item 2</a></li>
+        <li><a>Item 3</a></li>
+      </ul>
+    </div>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Navbar</h3>
-		<div class="navbar bg-base-100 rounded-box shadow-xl">
-			<div class="flex-1">
-				<a class="btn btn-ghost normal-case text-xl">daisyUI</a>
-			</div>
-			<div class="flex-none">
-				<ul class="menu menu-horizontal px-1">
-					<li><a>Link</a></li>
-					<li>
-						<details>
-							<summary>
-								Parent
-							</summary>
-							<ul class="p-2 bg-base-100">
-								<li><a>Link 1</a></li>
-								<li><a>Link 2</a></li>
-							</ul>
-						</details>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Navbar</h3>
+      <div class="navbar bg-base-100 rounded-box shadow-xl">
+        <div class="flex-1">
+          <a class="btn btn-ghost normal-case text-xl">daisyUI</a>
+        </div>
+        <div class="flex-none">
+          <ul class="menu menu-horizontal px-1">
+            <li><a>Link</a></li>
+            <li>
+              <details>
+                <summary>Parent</summary>
+                <ul class="p-2 bg-base-100">
+                  <li><a>Link 1</a></li>
+                  <li><a>Link 2</a></li>
+                </ul>
+              </details>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Pagination</h3>
-		<div class="join">
-			<button class="join-item btn">1</button>
-			<button class="join-item btn btn-active">2</button>
-			<button class="join-item btn">3</button>
-			<button class="join-item btn">4</button>
-		</div>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Pagination</h3>
+      <div class="join">
+        <button class="join-item btn">1</button>
+        <button class="join-item btn btn-active">2</button>
+        <button class="join-item btn">3</button>
+        <button class="join-item btn">4</button>
+      </div>
+    </div>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Steps</h3>
-		<ul class="steps">
-			<li class="step step-primary">Register</li>
-			<li class="step step-primary">Choose plan</li>
-			<li class="step">Purchase</li>
-			<li class="step">Receive Product</li>
-		</ul>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Steps</h3>
+      <ul class="steps">
+        <li class="step step-primary">Register</li>
+        <li class="step step-primary">Choose plan</li>
+        <li class="step">Purchase</li>
+        <li class="step">Receive Product</li>
+      </ul>
+    </div>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Tab</h3>
-		<div class="tabs">
-			<a class="tab tab-bordered">Tab 1</a>
-			<a class="tab tab-bordered tab-active">Tab 2</a>
-			<a class="tab tab-bordered">Tab 3</a>
-		</div>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Tab</h3>
+      <div class="tabs">
+        <a class="tab tab-bordered">Tab 1</a>
+        <a class="tab tab-bordered tab-active">Tab 2</a>
+        <a class="tab tab-bordered">Tab 3</a>
+      </div>
+    </div>
 
-	<h2 class="my-2 text-3xl">Mockup</h2>
+    <h2 class="my-2 text-3xl">Mockup</h2>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Code</h3>
-		<div class="mockup-code">
-			<pre data-prefix="$"><code>npm i unocss-preset-daisy</code></pre>
-			<pre data-prefix=">" class="text-warning"><code>installing...</code></pre>
-			<pre data-prefix=">" class="text-success"><code>Done!</code></pre>
-		</div>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Code</h3>
+      <div class="mockup-code">
+        <pre data-prefix="$"><code>npm i unocss-preset-daisy</code></pre>
+        <pre
+          data-prefix=">"
+          class="text-warning"
+        ><code>installing...</code></pre>
+        <pre data-prefix=">" class="text-success"><code>Done!</code></pre>
+      </div>
+    </div>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Phone</h3>
-		<div class="mockup-phone">
-			<div class="camera"></div>
-			<div class="display">
-				<div class="artboard artboard-demo phone-1">Hi.</div>
-			</div>
-		</div>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Phone</h3>
+      <div class="mockup-phone">
+        <div class="camera"></div>
+        <div class="display">
+          <div class="artboard artboard-demo phone-1">Hi.</div>
+        </div>
+      </div>
+    </div>
 
-	<div class="my-4">
-		<h3 class="font-bold my-1 text-xl">Window</h3>
-		<div class="mockup-window border bg-base-300">
-			<div class="flex justify-center px-4 py-16 bg-base-200">Hello!</div>
-		</div>
-	</div>
+    <div class="my-4">
+      <h3 class="font-bold my-1 text-xl">Window</h3>
+      <div class="mockup-window border bg-base-300">
+        <div class="flex justify-center px-4 py-16 bg-base-200">Hello!</div>
+      </div>
+    </div>
 
-	<!-- Modal -->
-	<input type="checkbox" id="my-modal" class="modal-toggle" />
-	<div class="modal">
-		<div class="modal-box rounded-box">
-			<h3 class="font-bold text-lg">Congratulations random Internet user!</h3>
-			<p class="py-4">
-				You've been selected for a chance to get one year of subscription to use
-				Wikipedia for free!
-			</p>
-			<div class="modal-action">
-				<label for="my-modal" class="btn">Yay!</label>
-			</div>
-		</div>
-	</div>
+    <!-- Modal -->
+    <input type="checkbox" id="my-modal" class="modal-toggle" />
+    <div class="modal">
+      <div class="modal-box rounded-box">
+        <h3 class="font-bold text-lg">Congratulations random Internet user!</h3>
+        <p class="py-4">
+          You've been selected for a chance to get one year of subscription to
+          use Wikipedia for free!
+        </p>
+        <div class="modal-action">
+          <label for="my-modal" class="btn">Yay!</label>
+        </div>
+      </div>
+    </div>
 
-	<script type="module">
-		import '@unocss/reset/tailwind.css'
-		import 'uno.css'
-	</script>
-</body>
+    <script type="module">
+      import '@unocss/reset/tailwind.css';
+      import 'uno.css';
+    </script>
+  </body>
+</html>
