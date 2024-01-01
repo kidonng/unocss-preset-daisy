@@ -25,25 +25,12 @@ declare module 'daisyui/dist/unstyled.js' {
 	export default unstyled
 }
 
-declare module 'daisyui/dist/unstyled.rtl.js' {
-	import type {CssInJs} from 'postcss-js'
-
-	const unstyledRtl: CssInJs
-	export default unstyledRtl
-}
 
 declare module 'daisyui/dist/styled.js' {
 	import type {CssInJs} from 'postcss-js'
 
 	const styled: CssInJs
 	export default styled
-}
-
-declare module 'daisyui/dist/styled.rtl.js' {
-	import type {CssInJs} from 'postcss-js'
-
-	const styledRtl: CssInJs
-	export default styledRtl
 }
 
 declare module 'daisyui/dist/utilities-unstyled.js' {
@@ -65,6 +52,13 @@ declare module 'daisyui/src/theming/themes.js' {
 	export default themes
 }
 
+declare module 'daisyui/src/lib/utility-classes.js' {
+  import type { CssInJs } from 'postcss-js'
+
+  const utilityClasses: CssInJs
+  export default utilityClassess
+}
+
 declare module 'daisyui/src/theming/functions.js' {
 	import type {CssInJs} from 'postcss-js'
 
@@ -72,6 +66,5 @@ declare module 'daisyui/src/theming/functions.js' {
 		addBase: (theme: CssInJs) => void,
 		config: (key: string) => unknown,
 		themes: Record<string, Record<string, string>>,
-		colorFunction: 'hsl' | 'lch'
 	): void
 }
