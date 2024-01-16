@@ -4,7 +4,7 @@
 	"description": "UnoCSS preset for daisyUI",
 	"scripts": {
 		"build": "vite build demo",
-		"prepack": "tsc",
+		"prepare": "tsc",
 		"preview": "vite preview demo --host",
 		"start": "vite demo --host"
 	},
