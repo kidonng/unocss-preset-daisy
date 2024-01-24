@@ -87,7 +87,6 @@ export const presetDaisy = (
 		}
 
 		if (isAtRule && node.name !== 'supports' && node.name === 'keyframes') {
-			console.log(node)
 			continue
 		}
 
